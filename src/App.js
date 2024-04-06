@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Home from './component/Home'
 import './App.css';
-import Question from './component/Question';
 
+import Result from './component/Result'
 
 const App = () => {
   const [path, setPath] = useState("");
@@ -11,15 +12,12 @@ const App = () => {
     setPath(param);
   }
 
-  if(path == 'start'){
     return(
-      <Question path="start" pathHandler={pathHandler}/>
+      <Routes>
+      <Route path='' element={<Home/>}/>
+      <Route path='/result' element={<Result/>}/>
+      </Routes>
     )
-  }else{
-    return(
-      <Home path="" pathHandler={pathHandler}/>
-    )
-  }
 }
 
 export default App;
