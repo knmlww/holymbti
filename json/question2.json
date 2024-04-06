@@ -1,0 +1,102 @@
+
+[
+    {
+      "id": 0,
+      "question": "mbti 첫 번째 질문입니다. 당신은 I인가요? E인가요?",
+      "options": [
+        { "optionId": "1" ,"value": "I", "text": "I" },
+        { "optionId": "2", "value": "E", "text": "E" }
+      ]
+    },
+    {
+        "id": 1,
+        "question": "mbti 두 번째 질문입니다. 당신은 I인가요? E인가요?",
+        "options": [
+          { "optionId": "1", "value": "I", "text": "I" },
+          { "optionId": "2" ,"value": "E", "text": "E" }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "mbti 세 번째 질문입니다. 당신은 I인가요? E인가요?",
+        "options": [
+          { "optionId": "1", "value": "I", "text": "I" },
+          { "optionId": "2","value": "E", "text": "E" }
+        ]
+      },
+
+      {
+        "id": 3,
+        "question": "mbti 네 번째 질문입니다. 당신은 N인가요? S인가요?",
+        "options": [
+          { "optionId": "1", "value": "N", "text": "N" },
+          { "optionId": "2", "value": "S", "text": "S" }
+        ]
+      },
+
+      {
+        "id": 4,
+        "question": "mbti 다섯 번째 질문입니다. 당신은 N인가요? S인가요?",
+        "options": [
+            { "optionId": "1", "value": "N", "text": "N" },
+            { "optionId": "2", "value": "S", "text": "S" }
+          ]
+      },
+      {
+        "id": 5,
+        "question": "mbti 여섯 번째 질문입니다. 당신은 N인가요? S인가요?",
+        "options": [
+            { "optionId": "1", "value": "N", "text": "N" },
+            { "optionId": "2", "value": "S", "text": "S" }
+          ]
+      },
+      {
+        "id": 6,
+        "question": "mbti 일곱 번째 질문입니다. 당신은 T인가요? F인가요?",
+        "options": [
+            { "optionId": "1", "value": "T", "text": "T" },
+            { "optionId": "2", "value": "F", "text": "F" }
+          ]
+      },
+      {
+        "id": 7,
+        "question": "mbti 여덟 번째 질문입니다. 당신은 T인가요? F인가요?",
+        "options": [
+            { "optionId": "1", "value": "T", "text": "T" },
+            { "optionId": "2", "value": "F", "text": "F" }
+          ]
+      },
+      {
+        "id": 8,
+        "question": "mbti 아홉 번째 질문입니다. 당신은 T인가요? F인가요?",
+        "options": [
+            { "optionId": "1", "value": "T", "text": "T" },
+            { "optionId": "2", "value": "F", "text": "F" }
+          ]
+      },
+      {
+        "id": 9,
+        "question": "mbti 열 번째 질문입니다. 당신은 J인가요? P인가요?",
+        "options": [
+            { "optionId": "1", "value": "J", "text": "J" },
+            { "optionId": "2", "value": "P", "text": "P" }
+          ]
+      },
+      {
+        "id": 10,
+        "question": "mbti 열한 번째 질문입니다. 당신은 J인가요? P인가요?",
+        "options": [
+            { "optionId": "1", "value": "J", "text": "J" },
+            { "optionId": "2", "value": "P", "text": "P" }
+          ]
+      },
+      {
+        "id": 11,
+        "question": "mbti 마지막 질문입니다. 당신은 J인가요? P인가요?",
+        "options": [
+            { "optionId": "1", "value": "J", "text": "J" },
+            { "optionId": "2", "value": "P", "text": "P" }
+          ]
+      }
+
+  ]
