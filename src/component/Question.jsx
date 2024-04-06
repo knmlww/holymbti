@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Main = (props) => {
+const Question = (props) => {
   const [started, setStarted] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [question, setQuestion] = useState([]);
+  const [questionNum , setQuestionNum] = useState(0);
 
   useEffect(()=>{
-   // axios.get("/json/question2.json")
-      axios.get("/api/server_test")  
+    axios.get("/json/question2.json")
+   //   axios.get("/api/server_test")  
          .then((res)=>{
-     //     const response = JSON.parse(res.data);
-       //   setQuestion(res.data);
+        ///  const response = JSON.parse(res.data);
+          setQuestion(res.data);
           console.dir(res);
          })
-  })
+  },[])
   // 시작 버튼을 클릭할 때 호출되는 함수
   const handleStartButtonClick = () => {
     setStarted(true);
@@ -23,13 +24,12 @@ const Main = (props) => {
   // 선택한 옵션을 처리하는 함수
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
-    // 선택한 옵션을 처리하는 추가 로직을 여기에 작성할 수 있습니다.
   };
 
   return (
     <>
     {question?
-      question.map((list)=>(
+      question.map((list,index)=>(
         <div>
           <h2>{list.question}</h2>
           {list.options?
@@ -47,4 +47,4 @@ const Main = (props) => {
 }
 
 
-export default Main;
+export default Question;

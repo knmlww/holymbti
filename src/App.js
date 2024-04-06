@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Home from './component/home'
+import Home from './component/Home'
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import Second from './component/second';
-import Main from './component/Main';
+import Question from './component/Question';
 
 
 const App = () => {
@@ -15,7 +13,7 @@ const App = () => {
 
   if(path == 'start'){
     return(
-      <Main path="start" pathHandler={pathHandler}/>
+      <Question path="start" pathHandler={pathHandler}/>
     )
   }else{
     return(
