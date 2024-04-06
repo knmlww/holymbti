@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.f02663e8.css",
-    "main.js": "/static/js/main.44897a1e.js",
-    "static/js/453.b24a526a.chunk.js": "/static/js/453.b24a526a.chunk.js",
-    "index.html": "/index.html",
-    "main.f02663e8.css.map": "/static/css/main.f02663e8.css.map",
-    "main.44897a1e.js.map": "/static/js/main.44897a1e.js.map",
-    "453.b24a526a.chunk.js.map": "/static/js/453.b24a526a.chunk.js.map"
+    "main.css": "/holymbti/static/css/main.f02663e8.css",
+    "main.js": "/holymbti/static/js/main.bb9c21a8.js",
+    "static/js/453.b24a526a.chunk.js": "/holymbti/static/js/453.b24a526a.chunk.js",
+    "index.html": "/holymbti/index.html",
+    "main.f02663e8.css.map": "/holymbti/static/css/main.f02663e8.css.map",
+    "main.bb9c21a8.js.map": "/holymbti/static/js/main.bb9c21a8.js.map",
+    "453.b24a526a.chunk.js.map": "/holymbti/static/js/453.b24a526a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f02663e8.css",
-    "static/js/main.44897a1e.js"
+    "static/js/main.bb9c21a8.js"
   ]
 }
