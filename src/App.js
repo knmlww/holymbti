@@ -3,7 +3,7 @@ import Home from './component/home'
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Second from './component/second';
-import Third from './component/third';
+import Main from './component/Main';
 
 
 const App = () => {
@@ -15,24 +15,13 @@ const App = () => {
 
   if(path == 'start'){
     return(
-      <Third path="start" pathHandler={pathHandler}/>
+      <Main path="start" pathHandler={pathHandler}/>
     )
   }else{
     return(
       <Home path="" pathHandler={pathHandler}/>
     )
   }
-  /*
-  return (
-
-    <>
-    <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/third" element={<Third/>} />
-    </Routes>
-    </>
-  );*/
-
 }
 
 export default App;

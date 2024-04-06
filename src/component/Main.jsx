@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Third = (props) => {
+const Main = (props) => {
   const [started, setStarted] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [question, setQuestion] = useState([]);
@@ -47,4 +47,4 @@ const Third = (props) => {
 }
 
 
-export default Third;
+export default Main;
