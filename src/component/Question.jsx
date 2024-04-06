@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useDispatch} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
+import '../css/App.css';    
+import '../css/button.css'
 
 const Question = (props) => {
   const dispatch = useDispatch();
@@ -36,19 +38,19 @@ const Question = (props) => {
 
   return (
   
-        <div>
+    <div className="App">
            {currentQuestion &&(
             <h2>{currentQuestion.question}</h2>             
             )
           }  
+          <div className="button-container">
           {currentQuestion &&(
             currentQuestion.options.map((list,index) => (
-              <>
-              <button key={list.value} onClick={() => moveNextQuestion(list.value)}>{list.text}</button> <br/>
-              </>
+              <button  className="button" key={list.value} onClick={() => moveNextQuestion(list.value)}>{list.text}</button>
               )
             )
           )}
+          </div>
         </div>
 
   );

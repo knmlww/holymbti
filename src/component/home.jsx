@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 
-import logo from '../logo.svg';
-import '../App.css';    
+import '../css/App.css';    
 import Question from './Question';
 import Main from './Main';
 

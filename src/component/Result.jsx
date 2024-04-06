@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
-import '../App.css';    
+import '../css/App.css';    
+import '../css/button.css'
 
 const Result = () => {
     let navigate = useNavigate();
@@ -60,7 +61,7 @@ const Result = () => {
         <div className="mbti-result">
             <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
         </div>
-        <button className="btn" onClick={moveHome}>
+        <button className="button" onClick={moveHome}>
         메인 화면으로 돌아가기</button>
       </div>
     );
