@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/holymbti/static/css/main.f02663e8.css",
-    "main.js": "/holymbti/static/js/main.0b351766.js",
+    "main.js": "/holymbti/static/js/main.b2f5544a.js",
     "static/js/453.b24a526a.chunk.js": "/holymbti/static/js/453.b24a526a.chunk.js",
     "index.html": "/holymbti/index.html",
     "main.f02663e8.css.map": "/holymbti/static/css/main.f02663e8.css.map",
-    "main.0b351766.js.map": "/holymbti/static/js/main.0b351766.js.map",
+    "main.b2f5544a.js.map": "/holymbti/static/js/main.b2f5544a.js.map",
     "453.b24a526a.chunk.js.map": "/holymbti/static/js/453.b24a526a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f02663e8.css",
-    "static/js/main.0b351766.js"
+    "static/js/main.b2f5544a.js"
   ]
 }
