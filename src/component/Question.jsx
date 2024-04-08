@@ -15,7 +15,7 @@ const Question = (props) => {
   const [questionIndex , setQuestionIndex] = useState(0);
  
   useEffect(()=>{
-    axios.get("/json/question2.json",{withCredentials : true})
+    axios.get("/json/question2.json")
          .then((res)=>{
             setQuestionArr(res.data);
             setCurrentQuestion(res.data[0]);
