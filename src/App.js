@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './component/Home'
+import Home from './component/Home';
 import './css/App.css';
 
 import Result from './component/Result'
