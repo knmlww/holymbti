@@ -9,44 +9,11 @@ const Result = () => {
     const dispatch = useDispatch(); 
     const [resultMBTI, setResultMBTI] = useState("");
 
-    const  iScore  = useSelector(state => state.iScore);
-    const  eScore  = useSelector(state => state.eScore);
-    const  nScore  = useSelector(state => state.nScore);
-    const  sScore  = useSelector(state => state.sScore);
-    const  tScore  = useSelector(state => state.tScore);
-    const  fScore  = useSelector(state => state.fScore);
-    const  jScore  = useSelector(state => state.jScore);
-    const  pScore  = useSelector(state => state.pScore);
+    const  result = useSelector(state => state.resultMBTI);
 
     useEffect(()=>{
-        let result = "";
 
-        if(iScore > eScore){
-            result += 'I';
-        }else{
-            result += 'E';
-        }
-
-        if(nScore > sScore){
-            result += 'N';
-        }else{
-            result += 'S';
-        }
-
-        if(tScore > fScore){
-            result += 'T';
-        }else{
-            result += 'F';
-        }
-
-        if(jScore > pScore){
-            result += 'J';
-        }else{
-            result += 'P';
-        }
-
-
-        setResultMBTI(result);
+       setResultMBTI(result);
     },[]);
       
     const moveHome = () => {
@@ -56,9 +23,11 @@ const Result = () => {
 
     return (
       <div className="App">
-        <h1>당신의 심리 테스트 결과</h1>
+        <h2>나에게 필요한 말씀의 검은?</h2>
         <p>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
+      
         <div className="mbti-result">
+            <p>당신에게 필요한 말씀의 검의 유형은 곧 추가될 예정입니다!</p>
             <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
         </div>
         <button className="button" onClick={moveHome}>

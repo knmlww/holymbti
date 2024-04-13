@@ -6,7 +6,8 @@ const initialState = {
 	tScore : 0, //MBTI T 성향
 	fScore : 0, //MBTI F 성향
 	jScore : 0, //MBTI J 성향
-	pScore : 0 //MBTI P 성향  
+	pScore : 0, //MBTI P 성향  
+	resultMBTI: null
 }
 
 export default function scoreReducer(state = initialState, action) {
@@ -51,6 +52,11 @@ export default function scoreReducer(state = initialState, action) {
 				...state,
 				pScore : state.pScore + 1 
 			}
+		case "SAVE_RESULT":
+				return{
+				...state,
+				resultMBTI : action.payload 
+			}
 		case "CLEAR_SCORE":
 				return{
 				...state,
@@ -61,7 +67,8 @@ export default function scoreReducer(state = initialState, action) {
 				tScore : 0,
 				fScore : 0,
 				jScore : 0,
-				pScore : 0 
+				pScore : 0,
+				resultMBTI : null
 		}					
 		default:
 			return state
