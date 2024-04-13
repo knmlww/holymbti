@@ -9,7 +9,7 @@ const Main = (props) => {
   const [resultMember, setResultMember] = useState(0);
 
   useEffect(()=>{
-    axios.post("/getResultMember")
+    axios.post("/holymbti/getResultMember")
          .then((res)=>{
           setResultMember(res.data);
          })
