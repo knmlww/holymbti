@@ -53,49 +53,50 @@ const Question = (props) => {
 
       if(iScore > eScore){
           result += 'I';
-          i_result = 1;
+          i_result += 1;
       }else{
           result += 'E';
-          e_result = 1;
+          e_result += 1;
       }
 
       if(nScore > sScore){
           result += 'N';
-          n_result = 1;
+          n_result += 1;
       }else{
           result += 'S';
-          s_result = 1;
+          s_result += 1;
       }
 
       if(tScore > fScore){
           result += 'T';
-          t_result = 1;
+          t_result += 1;
       }else{
           result += 'F';
-          f_result = 1;
+          f_result += 1;
       }
 
       if(jScore > pScore){
           result += 'J';
-          j_result = 1;
+          j_result += 1;
       }else{
           result += 'P';
-          p_result = 1;
+          p_result += 1;
       }
 
       const url = '/holymbti/insertResult';
       const data = {
-          'mbti_result' : result,
-          'i_result' : i_result,
-          'e_result' : e_result,
-          'n_result' : n_result,
-          's_result' : s_result,
-          't_result' : t_result,
-          'f_result' : f_result,
-          'j_result' : j_result,
-          'p_result' : p_result,
+          'mbtiResult' : result,
+          'iresult' : i_result,
+          'eresult' : e_result,
+          'nresult' : n_result,
+          'sresult' : s_result,
+          'tresult' : t_result,
+          'fresult' : f_result,
+          'jresult' : j_result,
+          'presult' : p_result,
 
       };
+
       const config = {"Content-Type": 'application/json'};
 
       axios.post(url,data,config)
