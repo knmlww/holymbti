@@ -22,8 +22,8 @@ const Main = (props) => {
   return (
     <div className="App">
          <div className="start-page">
-          <h1>심리테스트 시작하기</h1>
-          <p>당신의 심리 상태를 알아보는 테스트입니다.</p>
+          <h2>전신갑주 입고 홀스 성회 가자!</h2>
+          <p>나에게 필요한 말씀의 검은?</p>
           <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
           <button className="button" onClick={moveStart}>시작하기<br/><p>총 {resultMember}명 참여하였습니다.</p></button>
       
