@@ -4,6 +4,7 @@ import {useDispatch , useSelector} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
 import '../css/App.css';    
 import '../css/button.css'
+import Progress from './Progress';
 
 const Question = (props) => {
   const dispatch = useDispatch();
@@ -116,10 +117,12 @@ const Question = (props) => {
   return (
   
     <div className="App">
+   
            {currentQuestion &&(
             <h2>{currentQuestion.question}</h2>             
             )
           }  
+          <Progress totalQuestions={questionArr.length} currentQuestion={questionIndex}/>
           <div className="button-container">
           {currentQuestion &&(
             currentQuestion.options.map((list,index) => (
