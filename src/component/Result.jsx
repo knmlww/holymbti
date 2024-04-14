@@ -10,6 +10,7 @@ const Result = () => {
     const dispatch = useDispatch(); 
     const [resultMBTI, setResultMBTI] = useState("");
     const [resultCnt, setResultCnt] = useState(null);
+    const [imgSrc, setImgSrc] = useState(null);
 
     const  result = useSelector(state => state.resultMBTI);
 
@@ -23,15 +24,32 @@ const Result = () => {
         axios.post(url,data,config)
          .then((res)=>{
             setResultCnt(res.data);
+            setResultMBTI(result);
+            generateImage();
          })
 
-        setResultMBTI(result);
     },[]);
       
     const moveHome = () => {
         dispatch({type:"CLEAR_SCORE"})
         navigate('/')
     }
+
+    const generateImage = () => {
+      const ran = Math.random();
+
+
+        if(ran<0.5){
+          
+        const imageName = result.concat("1");
+        setImgSrc(imageName);
+  
+        }else{
+        const imageName = result.concat("2");
+        setImgSrc(imageName);
+        }
+        
+      }
 
     return (
       <div className="App">
@@ -41,6 +59,8 @@ const Result = () => {
         <div className="mbti-result">
             <p>나와 같은 MBTI 유형의 수는 {resultCnt}명 입니다!</p>
             <p>당신에게 필요한 말씀의 검의 유형은 곧 추가될 예정입니다!</p>
+            {imgSrc?<img width="500" height="431"	src={require(`../images/${imgSrc}.jpg`)} alt={imgSrc}/>:null}
+
             <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
         </div>
         <button className="button" onClick={moveHome}>
