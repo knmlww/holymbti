@@ -17,6 +17,25 @@ const Result = () => {
     const  result = useSelector(state => state.resultMBTI);
 
     useEffect(()=>{
+
+      const generateImage = () => {
+        const ran = Math.random();
+  
+  
+          if(ran<0.5){
+            
+          const imageName = result.concat("1");
+          setImgSrc(imageName);
+          setData(true);
+          }else{
+          const imageName = result.concat("2");
+          setImgSrc(imageName);
+          setData(true);
+          }
+          
+        }
+
+
         const url = '/holymbti/findMyMBTICount';
 
         const data = {
@@ -32,29 +51,13 @@ const Result = () => {
             setData(false);
          })
 
-    },[]);
+    },[result]);
       
     const moveHome = () => {
         dispatch({type:"CLEAR_SCORE"})
         navigate('/')
     }
 
-    const generateImage = () => {
-      const ran = Math.random();
-
-
-        if(ran<0.5){
-          
-        const imageName = result.concat("1");
-        setImgSrc(imageName);
-        setData(true);
-        }else{
-        const imageName = result.concat("2");
-        setImgSrc(imageName);
-        setData(true);
-        }
-        
-      }
 
     return (
         
@@ -71,8 +74,12 @@ const Result = () => {
 
             <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
         </div>
+        <div className='result-button-container'>
         <button className="button" onClick={moveHome}>
         메인 화면으로 돌아가기</button>
+        <button className="button" onClick={moveHome}>
+        메인 화면으로 돌아가기2</button>
+        </div>
         </>
          :null }
       </div>

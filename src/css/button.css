@@ -28,7 +28,7 @@
     gap: 10px; /* 버튼 사이의 간격을 설정하세요 (원하는 크기로 조정 가능) */
   }
 
-    /* 버튼 간격을 주기 위한 CSS */
+  /* 결과 화면 버튼 간격 CSS */
 .result-button-container {
   padding: 10px 20px;
   display: flex;

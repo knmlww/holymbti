@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate  } from 'react-router-dom';
 import '../css/App.css';    
 import '../css/button.css'
 import axios from 'axios';
@@ -12,32 +11,8 @@ const Main = (props) => {
     axios.post("/holymbti/getResultMember")
          .then((res)=>{
           setResultMember(res.data);
-          generateRandom();
          })
   },[])
-
-
-  const generateRandom = () => {
-    const ran = Math.random();
-
-    let countEven = 0;
-    let countOdd = 0;
-    for(let i=0; i<1000; i++ ){
-      const ran = Math.random();
-
-      if(ran<0.5){
-    
-        countEven++;
-  
-        
-      }else{
-        countOdd++;
-      }
-
-    }
-
-
-  }
 
   const moveStart = () => {
     props.pathHandler("start");
