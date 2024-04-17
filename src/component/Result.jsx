@@ -58,6 +58,10 @@ const Result = () => {
         navigate('/')
     }
 
+    const moveInstagram = (url) => {
+      window.open(url, "_blank", "noopener, noreferrer");
+  }
+
 
     return (
         
@@ -72,14 +76,15 @@ const Result = () => {
             <p>당신에게 필요한 말씀의 검의 유형은 곧 추가될 예정입니다!</p>
             {imgSrc?<img width="431" height="431"	src={require(`../images/${imgSrc}.jpg`)} alt={imgSrc}/>:null}
 
-            <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
+            <p style={{fontWeight: 'bold' }}>다른 유형은 홀스 공식 계정에서 확인하세요!</p>
         </div>
         <div className='result-button-container'>
+        <button className="button" onClick={() => moveInstagram("https://www.instagram.com/theholyspirit_fg")}>
+        홀스 성회 인스타그램</button>
         <button className="button" onClick={moveHome}>
         메인 화면으로 돌아가기</button>
-        <button className="button" onClick={moveHome}>
-        메인 화면으로 돌아가기2</button>
         </div>
+
         </>
          :null }
       </div>
