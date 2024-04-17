@@ -84,6 +84,8 @@ const Question = (props) => {
           p_result += 1;
       }
 
+      const generatedImage = generateImage(result);
+
       const url = '/holymbti/insertResult';
       const data = {
           'mbtiResult' : result,
@@ -95,6 +97,7 @@ const Question = (props) => {
           'fresult' : f_result,
           'jresult' : j_result,
           'presult' : p_result,
+          'imgName' : generatedImage
 
       };
 
@@ -114,15 +117,33 @@ const Question = (props) => {
     }
   };
 
+  const generateImage = (param) => {
+    const ran = Math.random();
+
+
+      if(ran<0.5){
+        
+      const imageName = param.concat("1");
+      return imageName;
+
+      }else{
+      const imageName = param.concat("2");
+      return imageName;
+      }
+      
+    }
+
   return (
   
     <div className="App">
    
            {currentQuestion &&(
-            <h2>{currentQuestion.question}</h2>             
+            <>
+            <h2>{currentQuestion.question}</h2>          
+            <Progress totalQuestions={questionArr.length} currentQuestion={questionIndex}/>   
+            </>
             )
           }  
-          <Progress totalQuestions={questionArr.length} currentQuestion={questionIndex}/>
           <div className="button-container">
           {currentQuestion &&(
             currentQuestion.options.map((list,index) => (

@@ -8,6 +8,8 @@ import '../css/button.css'
 const Result = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch(); 
+    
+    const [data , setData] = useState(false);
     const [resultMBTI, setResultMBTI] = useState("");
     const [resultCnt, setResultCnt] = useState(null);
     const [imgSrc, setImgSrc] = useState(null);
@@ -26,6 +28,8 @@ const Result = () => {
             setResultCnt(res.data);
             setResultMBTI(result);
             generateImage();
+         }).catch((error)=>{
+            setData(false);
          })
 
     },[]);
@@ -43,29 +47,36 @@ const Result = () => {
           
         const imageName = result.concat("1");
         setImgSrc(imageName);
-  
+        setData(true);
         }else{
         const imageName = result.concat("2");
         setImgSrc(imageName);
+        setData(true);
         }
         
       }
 
     return (
+        
       <div className="App">
+        {data?
+        <>
         <h2>나에게 필요한 말씀의 검은?</h2>
         <p>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
       
         <div className="mbti-result">
-            <p>나와 같은 MBTI 유형의 수는 {resultCnt}명 입니다!</p>
+            <p>나와 같은 MBTI 유형의 수는 <span>{resultCnt}</span>명 입니다!</p>
             <p>당신에게 필요한 말씀의 검의 유형은 곧 추가될 예정입니다!</p>
-            {imgSrc?<img width="500" height="431"	src={require(`../images/${imgSrc}.jpg`)} alt={imgSrc}/>:null}
+            {imgSrc?<img width="431" height="431"	src={require(`../images/${imgSrc}.jpg`)} alt={imgSrc}/>:null}
 
             <p style={{ color: 'red', fontWeight: 'bold' }}>이 페이지는 테스트 페이지이며, 웹 디자인이 완료되지 않았을 수 있습니다.</p>
         </div>
         <button className="button" onClick={moveHome}>
         메인 화면으로 돌아가기</button>
+        </>
+         :null }
       </div>
+      
     );
   };
 
