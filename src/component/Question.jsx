@@ -86,8 +86,11 @@ const Question = (props) => {
 
       const generatedImage = generateImage(result);
 
+      const generatedNumber = generateNumber();
+
       const url = '/holymbti/insertResult';
       const data = {
+          "issueNum" : generatedNumber,
           'mbtiResult' : result,
           'iresult' : i_result,
           'eresult' : e_result,
@@ -107,7 +110,7 @@ const Question = (props) => {
         .then(res => {
           // 성공 처리
           dispatch({type: 'SAVE_RESULT',payload:result});
-          navigate('/result');
+          navigate(`/searchResult/search?${generatedNumber}` ,{ state: generatedNumber });
       }).catch(err => {
         // 에러 처리
         //console.dir(err);// --> 서버단 에러메세지 출력~
@@ -132,6 +135,20 @@ const Question = (props) => {
       }
       
     }
+
+  const generateNumber = () => {
+    let result = "";
+
+    const characters = '0123456789';
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < 9; i++) {
+      const randomIndex = Math.floor(Math.random() * charactersLength);
+      result += characters.charAt(randomIndex);
+    }
+
+    return parseInt(result);
+  }
 
   return (
   

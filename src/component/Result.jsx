@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate ,useLocation  } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
 import axios from 'axios';
 import '../css/App.css';    
@@ -14,10 +14,12 @@ const Result = () => {
     const [resultCnt, setResultCnt] = useState(null);
     const [imgSrc, setImgSrc] = useState(null);
 
-    const  result = useSelector(state => state.resultMBTI);
+    ///const  result = useSelector(state => state.resultMBTI);
+
+    const { state } = useLocation();
 
     useEffect(()=>{
-
+/*
       const generateImage = () => {
         const ran = Math.random();
   
@@ -34,24 +36,26 @@ const Result = () => {
           }
           
         }
+*/
 
+        const url = '/searchResult';
 
-        const url = '/holymbti/findMyMBTICount';
-
-        const data = {
-            'mbtiResult' : result,
-        };
-        const config = {"Content-Type": 'application/json'};
-        axios.post(url,data,config)
+        axios.get(url, {
+          params: {
+            search: state
+          }
+        })
          .then((res)=>{
-            setResultCnt(res.data);
-            setResultMBTI(result);
-            generateImage();
+          console.dir(res.data)
+         setResultCnt(res.data.mbtiCount);
+          setResultMBTI(res.data.mbtiResult);
+          setImgSrc(res.data.imgName);
+          setData(true)
          }).catch((error)=>{
             setData(false);
          })
 
-    },[result]);
+    },[]);
       
     const moveHome = () => {
         dispatch({type:"CLEAR_SCORE"})
@@ -61,7 +65,6 @@ const Result = () => {
     const moveInstagram = (url) => {
       window.open(url, "_blank", "noopener, noreferrer");
   }
-
 
     return (
         
