@@ -23,7 +23,7 @@ const Result = () => {
     useEffect(()=>{
    
 
-        const url = '/searchResult';
+        const url = `/searchResult/${state}`;
 
         axios.get(url, {
           params: {
