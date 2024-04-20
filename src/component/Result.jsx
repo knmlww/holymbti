@@ -21,7 +21,7 @@ const Result = () => {
     useEffect(()=>{
    
 
-        const url = `/searchResult/${search}`;
+        const url = `/holymbti/searchResult/${search}`;
 
         axios.get(url, {
           params: {
@@ -33,7 +33,7 @@ const Result = () => {
          setResultCnt(res.data.mbtiCount);
           setResultMBTI(res.data.mbtiResult);
           setImgSrc(res.data.imgName);
-          setData(true)
+          //setData(true)
          }).catch((error)=>{
             setData(false);
          })
@@ -52,7 +52,7 @@ const Result = () => {
     return (
         
       <div className="App">
-        {data?
+        {//data?
         <>
         <h2>나에게 필요한 말씀의 검은?</h2>
         <p>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
@@ -72,7 +72,8 @@ const Result = () => {
         </div>
 
         </>
-         :null }
+         //:null
+         }
       </div>
       
     );
