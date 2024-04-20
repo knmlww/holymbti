@@ -8,6 +8,8 @@ import '../css/button.css'
 const Result = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch(); 
+
+    const location = window.location.href;
     
     const [data , setData] = useState(false);
     const [resultMBTI, setResultMBTI] = useState("");
@@ -19,8 +21,6 @@ const Result = () => {
     const { search } = useParams();
 
     useEffect(()=>{
-   
-
         const url = `/holymbti/searchResult/${search}`;
 
         axios.get(url, {
@@ -49,6 +49,15 @@ const Result = () => {
       window.open(url, "_blank", "noopener, noreferrer");
   }
 
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("클립보드에 링크가 복사되었어요.");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
     return (
         
       <div className="App">
@@ -69,6 +78,8 @@ const Result = () => {
         홀스 성회 인스타그램</button>
         <button className="button" onClick={moveHome}>
         메인 화면으로 돌아가기</button>
+        <button className="button" onClick={()=>handleCopyClipBoard(`${location}`)}>
+        링크 공유하기</button>
         </div>
 
         </>
