@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate ,useLocation  } from 'react-router-dom';
+import { useNavigate ,useLocation, useSearchParams  } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
 import axios from 'axios';
 import '../css/App.css';    
@@ -14,39 +14,24 @@ const Result = () => {
     const [resultCnt, setResultCnt] = useState(null);
     const [imgSrc, setImgSrc] = useState(null);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
     ///const  result = useSelector(state => state.resultMBTI);
 
     const { state } = useLocation();
 
     useEffect(()=>{
-/*
-      const generateImage = () => {
-        const ran = Math.random();
-  
-  
-          if(ran<0.5){
-            
-          const imageName = result.concat("1");
-          setImgSrc(imageName);
-          setData(true);
-          }else{
-          const imageName = result.concat("2");
-          setImgSrc(imageName);
-          setData(true);
-          }
-          
-        }
-*/
+   
 
         const url = '/searchResult';
 
         axios.get(url, {
           params: {
-            search: state
+            search: searchParams.get("search")
           }
         })
          .then((res)=>{
-          console.dir(res.data)
+ 
          setResultCnt(res.data.mbtiCount);
           setResultMBTI(res.data.mbtiResult);
           setImgSrc(res.data.imgName);

@@ -110,7 +110,7 @@ const Question = (props) => {
         .then(res => {
           // 성공 처리
           dispatch({type: 'SAVE_RESULT',payload:result});
-          navigate(`/searchResult/search?${generatedNumber}` ,{ state: generatedNumber });
+          navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
       }).catch(err => {
         // 에러 처리
         //console.dir(err);// --> 서버단 에러메세지 출력~
