@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate ,useLocation, useSearchParams  } from 'react-router-dom';
+import { useNavigate ,useLocation, useSearchParams,useParams } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
 import axios from 'axios';
 import '../css/App.css';    
@@ -16,14 +16,12 @@ const Result = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
-    ///const  result = useSelector(state => state.resultMBTI);
-
-    const { state } = useLocation();
+    const { search } = useParams();
 
     useEffect(()=>{
    
 
-        const url = `/searchResult/${state}`;
+        const url = `/searchResult/${search}`;
 
         axios.get(url, {
           params: {
