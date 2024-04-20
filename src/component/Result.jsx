@@ -24,7 +24,6 @@ const Result = () => {
 
     useEffect(()=>{
 
-
         const url = `/holymbti/searchResult/${search}`;
         axios.get(url, {
           params: {
@@ -37,9 +36,9 @@ const Result = () => {
           setResultMBTI(res.data.mbtiResult);
           setImgSrc(res.data.imgName);
           setIssueNum(res.data.issueNum);
-          //setData(true)
+          setData(true)
          }).catch((error)=>{
-            setData(false);
+          setData(false);
          })
 
     },[]);
@@ -64,13 +63,13 @@ const Result = () => {
 
   const shareKakao = () => {
     const imageUrl = document.getElementById("resultImage").src;
-
+    
     const resultUrl = `https://www.holymbti.kro.kr/searchResult/${issueNum}`;
     if (window.Kakao) {
       const kakao = window.Kakao;
  
       if (!kakao.isInitialized()) {
-        kakao.init('eb7c072b813f8103cef26cc19eb6896b');
+        kakao.init(process.env.REACT_APP_KAKAO_KEY);
       }
       console.log(Kakao);
       Kakao.Share.sendDefault({
@@ -111,7 +110,7 @@ const Result = () => {
     return (
         
       <div className="App">
-        {//data?
+        {data?
         <>
         <h2>나에게 필요한 말씀의 검은?</h2>
         <p>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
@@ -135,7 +134,7 @@ const Result = () => {
         </div>
 
         </>
-         //:null
+         :null
          }
       </div>
       
