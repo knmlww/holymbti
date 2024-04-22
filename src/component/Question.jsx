@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 import {useDispatch , useSelector} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Question = (props) => {
 
   const [questionArr, setQuestionArr] = useState([]);
   const [currentQuestion , setCurrentQuestion] = useState(null);
-  const [questionIndex , setQuestionIndex] = useState(0);
+  const [questionIndex , setQuestionIndex] = useState(1);
 
   const  iScore  = useSelector(state => state.iScore);
   const  eScore  = useSelector(state => state.eScore);
@@ -40,7 +40,7 @@ const Question = (props) => {
 
     dispatch({type: option});
 
-    if(questionIndex === 11){
+    if(questionIndex == 12){
 
       let result = "";
       let i_result = 0;
@@ -152,7 +152,7 @@ const Question = (props) => {
   }
 
   return (
-  
+  {/*
     <div className="App">
    
            {currentQuestion &&(
@@ -171,6 +171,49 @@ const Question = (props) => {
           )}
           </div>
         </div>
+        */ },
+
+<div id="qna" className="container">
+  <section id="qna" className="mx-auto mt-5">
+    <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className="img-fluid" />
+  </section>
+  <section id="qna" className="mx-auto mt-2 py-1 px-1">
+    <section className="mx-auto mt-4" />
+    <img
+      src={require(`../images/q/q1.png`)}
+      alt="q1Image"
+      className="img-fluid"
+      style={{ width: "50%" }}
+    />
+  </section>
+  {currentQuestion &&(
+  <p className="mt-2 mb-2">
+    {currentQuestion.question}
+  </p>
+   )
+  }  
+
+  {currentQuestion &&(
+            currentQuestion.options.map((list,index) => (
+              <Fragment key={list.value}>
+              <button className="mt-4"  onClick={() => moveNextQuestion(list.value)}>{list.text}</button><br/>
+              </Fragment>
+      ) 
+    )
+  )}
+  {/*
+  <button className="mx-auto mt-2">
+    (오! 나 나온다!) 더욱 열심히 찬양한다.
+  </button>*/
+  }
+  <div className="logo-container">
+    <img
+      src={require(`../images/logo.png`)}
+      alt="mainImage"
+      className="img-fluid logo-image"
+    />
+  </div>
+</div>
 
   );
 }
