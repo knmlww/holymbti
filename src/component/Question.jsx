@@ -156,55 +156,34 @@ const Question = (props) => {
   }
 
   return (
-  {/*
-    <div className="App">
-   
-           {currentQuestion &&(
-            <>
-            <h2>{currentQuestion.question}</h2>          
-            <Progress totalQuestions={questionArr.length} currentQuestion={questionIndex}/>   
-            </>
-            )
-          }  
-          <div className="button-container">
-          {currentQuestion &&(
-            currentQuestion.options.map((list,index) => (
-              <button  className="button" key={list.value} onClick={() => moveNextQuestion(list.value)}>{list.text}</button>
-              )
-            )
-          )}
-          </div>
-        </div>
-        */ },
-
-<div id="qna" className="container">
-  <section id="qna" className="mx-auto mt-5">
-    <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className="img-fluid" />
-  </section>
-  <section id="qna" className="mx-auto mt-2 py-1 px-1">
+  <div id="qna" className="container">
+    <section id="qna" className="mx-auto mt-5">
+      <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className="img-fluid" />
+    </section>
+    <section id="qna" className="mx-auto mt-2 py-1 px-1">
     <section className="mx-auto mt-4" />
-    <img
-      src={require(`../images/q/q1.png`)}
-      alt="q1Image"
-      className="img-fluid"
-      style={{ width: "50%" }}
-    />
-  </section>
-  {currentQuestion &&(
-  <p className="mt-2 mb-2">
+      <img
+        src={require(`../images/q/q1.png`)}
+        alt="q1Image"
+        className="img-fluid"
+        style={{ width: "50%" }}
+      />
+    </section>
+    {currentQuestion &&(
+    <p className="mt-2 mb-2">
     {currentQuestion.question}
-  </p>
-   )
-  }  
+    </p>
+      )
+    }  
 
-  {currentQuestion &&(
-            currentQuestion.options.map((list,index) => (
-              <Fragment key={list.value}>
-              <button className="mt-4"  onClick={() => moveNextQuestion(list.value)}>{list.text}</button><br/>
-              </Fragment>
-      ) 
-    )
-  )}
+    {currentQuestion &&(
+              currentQuestion.options.map((list,index) => (
+                <Fragment key={list.value}>
+                  <button className="mt-4"  onClick={() => moveNextQuestion(list.value)}>{list.text}</button><br/>
+                </Fragment>
+        ) 
+      )
+    )}
   {/*
   <button className="mx-auto mt-2">
     (오! 나 나온다!) 더욱 열심히 찬양한다.
