@@ -1,9 +1,13 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState , Fragment } from 'react';
 import axios from 'axios';
 import {useDispatch , useSelector} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
 import '../css/App.css';    
 import '../css/button.css'
+
+import '../css/main.css';
+import '../css/default.css';
+import '../css/qna.css';
 import Progress from './Progress';
 
 const Question = (props) => {
