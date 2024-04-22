@@ -22,11 +22,11 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-      
-#qna button:hover {
-      background-color: #fca32d; /* 호버 시 배경색 변경 */
-      color: #000;
-  }    
+
+    #qna button:active {
+        background-color: #fca32d;
+        color: #000;
+    }    
 
       .logo-container {
         position: fixed;
