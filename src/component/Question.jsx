@@ -14,8 +14,11 @@ const Question = (props) => {
   let navigate = useNavigate();
 
   const [questionArr, setQuestionArr] = useState([]);
+  const [showQuestion, setShowQuestion] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [currentQuestion , setCurrentQuestion] = useState(null);
   const [questionIndex , setQuestionIndex] = useState(1);
+  const [fadeInOut, setFadeInOut] = useState("");
 
   const  iScore  = useSelector(state => state.iScore);
   const  eScore  = useSelector(state => state.eScore);
@@ -34,92 +37,31 @@ const Question = (props) => {
          })
   },[])
 
+  useEffect(()=>{
+    setFadeInOut('fade-in');
+    setShowQuestion(!showQuestion);
+    setIsDisabled(!isDisabled);
+  },[currentQuestion])
+
 
   const moveNextQuestion = (option) => {
 
+    if (showQuestion) {
+      setFadeInOut('fade-out');
+      setIsDisabled(!isDisabled);
+      setTimeout(() => {
+      setShowQuestion(!showQuestion);
+      setCurrentQuestion(questionArr[questionIndex+1]); 
+      }, 1000);
+    } 
+
     setQuestionIndex(questionIndex+1);
-    setCurrentQuestion(questionArr[questionIndex+1]);
+  //  setCurrentQuestion(questionArr[questionIndex+1]);
 
     dispatch({type: option});
 
     if(questionIndex === 11){
-
-      let result = "";
-      let i_result = 0;
-      let e_result = 0;
-      let n_result = 0;
-      let s_result = 0;
-      let t_result = 0;
-      let f_result = 0;
-      let j_result = 0;
-      let p_result = 0;
-
-      if(iScore > eScore){
-          result += 'I';
-          i_result += 1;
-      }else{
-          result += 'E';
-          e_result += 1;
-      }
-
-      if(nScore > sScore){
-          result += 'N';
-          n_result += 1;
-      }else{
-          result += 'S';
-          s_result += 1;
-      }
-
-      if(tScore > fScore){
-          result += 'T';
-          t_result += 1;
-      }else{
-          result += 'F';
-          f_result += 1;
-      }
-
-      if(jScore > pScore){
-          result += 'J';
-          j_result += 1;
-      }else{
-          result += 'P';
-          p_result += 1;
-      }
-
-      const generatedImage = generateImage(result);
-
-      const generatedNumber = generateNumber();
-
-      const url = '/holymbti/insertResult';
-      const data = {
-          "issueNum" : generatedNumber,
-          'mbtiResult' : result,
-          'iresult' : i_result,
-          'eresult' : e_result,
-          'nresult' : n_result,
-          'sresult' : s_result,
-          'tresult' : t_result,
-          'fresult' : f_result,
-          'jresult' : j_result,
-          'presult' : p_result,
-          'imgName' : generatedImage
-
-      };
-
-      const config = {"Content-Type": 'application/json'};
-
-      axios.post(url,data,config)
-        .then(res => {
-          // 성공 처리
-          dispatch({type: 'SAVE_RESULT',payload:result});
-         // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
-         navigate(`/searchResult/${generatedNumber}` ,{ state: generatedNumber });
-      }).catch(err => {
-        // 에러 처리
-        //console.dir(err);// --> 서버단 에러메세지 출력~
-        //console.dir()
-      });
-    
+      generateMBTI();
     }
   };
 
@@ -153,34 +95,123 @@ const Question = (props) => {
     return parseInt(result);
   }
 
+  const generateMBTI = () => {
+
+    
+    let result = "";
+    let i_result = 0;
+    let e_result = 0;
+    let n_result = 0;
+    let s_result = 0;
+    let t_result = 0;
+    let f_result = 0;
+    let j_result = 0;
+    let p_result = 0;
+
+    if(iScore > eScore){
+        result += 'I';
+        i_result += 1;
+    }else{
+        result += 'E';
+        e_result += 1;
+    }
+
+    if(nScore > sScore){
+        result += 'N';
+        n_result += 1;
+    }else{
+        result += 'S';
+        s_result += 1;
+    }
+
+    if(tScore > fScore){
+        result += 'T';
+        t_result += 1;
+    }else{
+        result += 'F';
+        f_result += 1;
+    }
+
+    if(jScore > pScore){
+        result += 'J';
+        j_result += 1;
+    }else{
+        result += 'P';
+        p_result += 1;
+    }
+
+    const generatedImage = generateImage(result);
+
+    const generatedNumber = generateNumber();
+
+    const url = '/holymbti/insertResult';
+    const data = {
+        "issueNum" : generatedNumber,
+        'mbtiResult' : result,
+        'iresult' : i_result,
+        'eresult' : e_result,
+        'nresult' : n_result,
+        'sresult' : s_result,
+        'tresult' : t_result,
+        'fresult' : f_result,
+        'jresult' : j_result,
+        'presult' : p_result,
+        'imgName' : generatedImage
+
+    };
+
+    const config = {"Content-Type": 'application/json'};
+
+    axios.post(url,data,config)
+      .then(res => {
+        // 성공 처리
+        dispatch({type: 'SAVE_RESULT',payload:result});
+       // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
+       navigate(`/searchResult/${generatedNumber}` ,{ state: generatedNumber });
+    }).catch(err => {
+      // 에러 처리
+      //console.dir(err);// --> 서버단 에러메세지 출력~
+      //console.dir()
+    });
+  
+  }
+
   return (
   <div id="qna" className="container">
     <section id="qna" className="mx-auto mt-5">
-      <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className="img-fluid" />
+      <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className='img-fluid' />
     </section>
     <section id="qna" className="mx-auto mt-2 py-1 px-1">
     <section className="mx-auto mt-4" />
       <img
         src={require(`../images/q/q1.png`)}
         alt="q1Image"
-        className="img-fluid"
+        className={'img-fluid '+fadeInOut}
         style={{ width: "50%" }}
       />
     </section>
     {currentQuestion &&(
-    <p className="mt-2 mb-2">
+    <p className={'mt-2 mb-2 '+fadeInOut}>
     {currentQuestion.question}
     </p>
       )
     }  
 
     {currentQuestion &&(
+      /*
               currentQuestion.options.map((list,index) => (
+                showQuestion?
                 <Fragment key={list.value}>
-                  <button className="mt-4"  onClick={() => moveNextQuestion(list.value)}>{list.text}</button><br/>
-                </Fragment>
+                  <button className={'mt-4'+fadeInOut}  onClick={() => moveNextQuestion(list.value)}>{list.text}</button><br/>
+                </Fragment>:null
         ) 
-      )
+      )*/
+      showQuestion?
+      <>
+      <button className={'mt-4 '+fadeInOut} disabled={isDisabled}   onClick={() => moveNextQuestion(currentQuestion.options[0].value)}>{currentQuestion.options[0].text}</button>
+      <br/>
+      <button className={'mx-auto mt-2 '+fadeInOut} disabled={isDisabled}   onClick={() => moveNextQuestion(currentQuestion.options[1].value)}>{currentQuestion.options[1].text}</button>
+      </>:null
     )}
   {/*
   <button className="mx-auto mt-2">

@@ -23,6 +23,51 @@
       transition: background-color 0.3s ease;
     }
 
+
+    .fade-in {
+      opacity: 1;
+      animation: fadeIn ease-in-out 1s;
+    }
+    
+    .fade-out {
+      opacity: 0;
+      animation: fadeOut ease-in-out 1s;
+    }
+
+    .btn-fade-in {
+      opacity: 1;
+      animation: fadeIn ease-in-out 1s;
+      color: white;
+      background-color: #4b1360;
+    }
+    
+    .btn-fade-out {
+      opacity: 0;
+      animation: fadeOut ease-in-out 1s;
+      background-color: #fca32d;
+      color: #000;
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+    
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+    
+      100% {
+        opacity: 0;
+      }
+    }
+
     #qna button:active {
         background-color: #fca32d;
         color: #000;
