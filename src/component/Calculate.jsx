@@ -12,20 +12,12 @@ const Calculate = (props) => {
 
 
   return (
-    <>
     <div id='calculate' className='calculate-container'>
-    <div id='image' className='calculate-image-container'>
-    <img
-        src={require(`../images/q/q5.png`)}
-        alt="q1Image"
-        className={'img-fluid '}
-        style={{ width: "50%" }}
-      />
-    <p className='loading'>말씀의 검 만드는 중...</p>
+        <div id='image' className='calculate-image-container'>
+            <img src={require(`../images/q/q5.png`)} alt="q1Image" className={'img-fluid '} style={{ width: "50%" }}/>
+        <p className='loading'>말씀의 검 만드는 중...</p>
+        </div>
     </div>
-    </div>
-    </>
- 
   );
 }
 
