@@ -54,12 +54,14 @@ const Question = (props) => {
       }, 1000);
     } 
 
-    setQuestionIndex(questionIndex+1);
+
   //  setCurrentQuestion(questionArr[questionIndex+1]);
 
     dispatch({type: option});
 
-    if(questionIndex === 11){
+    if(questionIndex != 11){
+      setQuestionIndex(questionIndex+1);
+    }else if (questionIndex === 11){
       generateMBTI();
     }
   };
@@ -179,16 +181,16 @@ const Question = (props) => {
   <div id="qna" className="qna-container">
     <section id="qna" className="mx-auto mt-5">
       <div className='bar-container'>
-      <img   src={require(`../images/bar/bar${questionIndex+1}.png`)} alt="bar1Image" className='img-fluid' />
+      <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className='img-fluid' />
       </div>
     </section>
-    <section id="qna" className="mx-auto mt-2 py-4 px-1">
+    <section id="qna" className="mx-auto mt-2 py-1 px-1">
     <section className="mx-auto mt-4" />
       <img
-        src={require(`../images/q/q1.png`)}
+        src={require(`../images/q/tv.png`)}
         alt="q1Image"
         className={'img-fluid '+fadeInOut}
-        style={{ width: "50%" }}
+        style={{ width: "37%" }}
       />
     </section>
     {currentQuestion &&(
