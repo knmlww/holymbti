@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../css/App.css';    
-import '../css/button.css'
+
 import '../css/main.css';
 import '../css/default.css';
 import axios from 'axios';
@@ -25,9 +24,9 @@ const Main = (props) => {
   }
   return (
   <div className="container">
-    {data?
-    <section id="main" className="mx-auto mt-2 py-5 px-5">
-      <h3 className="mx-auto mb-4">전신갑주 입고 홀스 성회 가자</h3>
+    {//data?
+    <section id="main" className="mx-auto mt-2">
+      <h3 className="mx-auto mb-4">전신갑주 입고<br/> 홀스 성회 가자</h3>
         <div className="col-5 mx-auto col-md-5 col-sm-5 col-12">
           <img  src={require(`../images/main2.png`)} className="img-fluid" alt="mainLogo" />
         </div>
@@ -41,7 +40,8 @@ const Main = (props) => {
         />
       </div>
     </section>
-    :null}
+   // :null
+    }
   </div>
  
   );
