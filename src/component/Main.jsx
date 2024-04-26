@@ -10,8 +10,9 @@ const Main = (props) => {
   const [data , setData] = useState(false);
 
   useEffect(()=>{
-    axios.post("/holymbti/getResultMember")
+    axios.post("/holymbti/holymbti/getResultMember")
          .then((res)=>{
+          console.dir(res.data)
           setResultMember(res.data);
           setData(true);
          }).catch((error)=>{
@@ -36,7 +37,7 @@ const Main = (props) => {
         <img
           src={require(`../images/logo.png`)}
           alt="mainImage"
-          className="img-fluid logo-image"
+          className=" logo-image"
         />
       </div>
     </section>

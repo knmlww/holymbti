@@ -1,7 +1,7 @@
-#qna{background-color: #fcf4e8;
+/*#qna{background-color: #fcf4e8;
     width: 90%;
     text-align: center;}
-    
+    */
     h3{
       font-weight: bold;
     }
@@ -9,18 +9,30 @@
     p{
 
     }
-
-.qna-container{
+    
+.qna{
   display: block;
   max-width: 480px;
   margin: 0 auto;
+  background: #fcf4e8;
 }  
 
+.img-section{
+  position: relative;
+  text-align: center;
+}
+
 .option-container{
+  position: relative;
   text-align: center;
   margin-top: 15%;
 }
 
+.bar-container{
+  position: relative;
+  margin: 5%;
+}
+/*
 #qna button{
       width: 20rem;
       display: inline-block;
@@ -37,10 +49,27 @@
       border-radius: 25px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-   /*   border-color: #4b1360;*/
       line-height: 50px;
     }
+*/
 
+.option-container button{
+  width: 20rem;
+  padding: 5px 10px;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: #FFFFFF;
+  border: 2px solid #BBA9D9;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  line-height: 35px;
+}
 
     .fade-in {
       opacity: 1;
@@ -93,14 +122,19 @@
         opacity: 0;
       }
     }
-
+/*
     #qna button:active {
         background-color: #fca32d;
         color: #000;
     }    
+*/
+.option-container button:active {
+  background-color: #fca32d;
+  color: #000;
+}    
 
-      .logo-container {
-        position: fixed;
+      .qna .logo-container {
+        position:relative;
         left: 0;
         right: 0;
         margin: 0 auto;

@@ -3,9 +3,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    '/api',
+    '/holymbti',
     createProxyMiddleware({
-      target: 'http://localhost:8080',
+      target: 'https://www.holymbti.kro.kr',
       changeOrigin: true,
     })
   );

@@ -1,18 +1,38 @@
 #final{background-color: #fcf4e8;
-    width: 80%;
+    width: 90%;
     text-align: center;}
 
+#final p{
+    font-family:'GangwonEdu_OTFBoldA' ;
+    font-size: small;
+    padding-top: 10%;}    
+
 #final h3{
-    font-size: x-large;}
+    font-size: small;
+    }
 
 #final h2{
-    font-size: x-large;}
+    font-size: small;
+    font-family: "GangwonEdu_OTFBoldA";}
 
     #final h2, #final p {
         margin-top: -5px; /* 원하는 크기로 상단 마진 조절 */
     }
     .phoneBG {
         margin-top: -10px; /* 원하는 크기로 상단 마진 조절 */
+    }
+
+@font-face {
+    font-family: "Dovemayo_gothic";
+    font-weight: normal;
+    src: url("../fonts/Dovemayo_gothic.ttf") format("truetype");
+    }    
+
+    @font-face {
+        font-family: 'GangwonEdu_OTFBoldA';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
     }
     
       

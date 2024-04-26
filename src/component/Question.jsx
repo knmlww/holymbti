@@ -145,7 +145,7 @@ const Question = (props) => {
 
     const generatedNumber = generateNumber();
 
-    const url = '/holymbti/insertResult';
+    const url = '/holymbti/holymbti/insertResult';
     const data = {
         "issueNum" : generatedNumber,
         'mbtiResult' : result,
@@ -178,28 +178,32 @@ const Question = (props) => {
   }
 
   return (
-  <div id="qna" className="qna-container">
-    <section id="qna" className="mx-auto mt-5">
+  <div className="qna">
+    <div  className="img-section">
+    <section className="mx-auto mt-5">
       <div className='bar-container'>
       <img   src={require(`../images/bar/bar${questionIndex}.png`)} alt="bar1Image" className='img-fluid' />
       </div>
     </section>
-    <section id="qna" className="mx-auto mt-2 py-1 px-1">
+    </div>
+    <div  className="img-section">
+    <section className="mx-auto mt-2 py-1 px-1">
     <section className="mx-auto mt-4" />
       <img
-        src={require(`../images/q/tv.png`)}
+        src={require(`../images/q/${questionIndex}.png`)}
         alt="q1Image"
         className={'img-fluid '+fadeInOut}
         style={{ width: "37%" }}
       />
     </section>
+
     {currentQuestion &&(
     <p className={'mt-2 mb-2 py-2 question-design '+fadeInOut}>
     {currentQuestion.question}
     </p>
       )
     }  
-
+    </div>
     {currentQuestion &&(
       /*
               currentQuestion.options.map((list,index) => (
@@ -212,9 +216,9 @@ const Question = (props) => {
       showQuestion?
       <>
       <div className='option-container'>
-      <button className={'mt-4 '+fadeInOut} disabled={isDisabled}   onClick={() => moveNextQuestion(currentQuestion.options[0].value)}>{currentQuestion.options[0].text}</button>
+      <button id="option1" className={'mt-4 '+fadeInOut} disabled={isDisabled}   onClick={() => moveNextQuestion(currentQuestion.options[0].value)}>{currentQuestion.options[0].text}</button>
       <br/>
-      <button className={'mx-auto mt-2 '+fadeInOut} disabled={isDisabled}   onClick={() => moveNextQuestion(currentQuestion.options[1].value)}>{currentQuestion.options[1].text}</button>
+      <button id="option2" className={'mx-auto mt-2 '+fadeInOut} disabled={isDisabled}   onClick={() => moveNextQuestion(currentQuestion.options[1].value)}>{currentQuestion.options[1].text}</button>
       </div>
       </>:null
     )}
