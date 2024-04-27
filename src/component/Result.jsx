@@ -25,7 +25,7 @@ const Result = () => {
 
     useEffect(()=>{
 
-        const url = `/holymbti/searchResult/${search}`;
+        const url = `/searchResult/${search}`;
         axios.get(url, {
           params: {
             search: searchParams.get("search")

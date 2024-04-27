@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from "react-redux";
+
 
 import '../css/main.css';
 import '../css/default.css';
@@ -6,13 +8,16 @@ import axios from 'axios';
 
 const Main = (props) => {
 
+  const dispatch = useDispatch();
+
   const [resultMember, setResultMember] = useState(0);
   const [data , setData] = useState(false);
 
   useEffect(()=>{
-    axios.post("/holymbti/holymbti/getResultMember")
+    dispatch({type:"CLEAR_SCORE"})
+
+    axios.post("holymbti/getResultMember")
          .then((res)=>{
-          console.dir(res.data)
           setResultMember(res.data);
           setData(true);
          }).catch((error)=>{

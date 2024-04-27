@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate  } from 'react-router-dom';
 
 import '../css/App.css';    
 import Question from './Question';
+import Calculate from './Calculate';
 import Main from './Main';
 
 const Home = (props) => {
@@ -12,15 +12,17 @@ const Home = (props) => {
     setPath(param);
   }
 
-  let navigate = useNavigate();   
-
-
 
   if(path == 'start'){
     return(
       <Question path="start" pathHandler={pathHandler}/>
     )
-  }else{
+  }else if(path == 'calculate'){
+    return(
+      <Calculate path="calculate" pathHandler={pathHandler}/>
+    )
+  }
+  else{
     return (
       <Main path="" pathHandler={pathHandler}/>
     );
