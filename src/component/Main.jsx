@@ -31,13 +31,13 @@ const Main = (props) => {
         <div className="col-5 mx-auto col-md-5 col-sm-5 col-12">
           <img  src={require(`../images/main2.png`)} className="img-fluid" alt="mainLogo" />
         </div>
-      <p className="mt-3 mb-4">나에게 맞은 말씀의 검은?</p>
+      <p className="mt-3 mb-4">나에게 필요한 말씀의 검은?</p>
       <button onClick={moveStart}>시작하기</button>
       <div className="logo-container">
         <img
           src={require(`../images/logo.png`)}
           alt="mainImage"
-          className=" logo-image"
+          className="img-fluid"
         />
       </div>
     </section>

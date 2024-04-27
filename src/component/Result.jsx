@@ -111,23 +111,19 @@ const Result = () => {
     return (
         
       <div id="final" className="container">
+          <img
+          src={require(`../images/p-bg/phoneBG.jpg`)}
+          alt="phoneBG"
+          className="img-fluid"
+          style={{ width: "100%" }}
+        />
+                <button className="mx-auto mt-4" >이미지 다운로드</button>
       <h3 className="mx-auto mb-4 mt-5">나에게 필요한 말씀의 검은?</h3>
       <h2>사랑에는 거짓이 없다니 악을 미워하고 선에 속하라 로마서 12:9</h2>
       <section id="main" className="mx-auto">
         <section className="mx-auto" />
-        <img
-          src={require(`../images/p-bg/phoneBG.jpg`)}
-          alt="phoneBG"
-          className="img-fluid phoneBG"
-          style={{ width: "50%" }}
-        />
+      
       </section>
-      <p>하나님 아버지
-저희의 마음을 진정한 사랑으로 채워주시기를 기도합니다.
-악한 것을 미워하고 선한 것에 속하도록 도와주소서
-진실하고 위선 없는 사랑으로 주님을 기쁘시게 하는 삶을 살도록 저를 인도해 주십시오. 
-당신의 사랑이 저를 통해 흐르게 하셔서 제가 이 세상의 빛으로 살아가게 하소서 
-예수님의 이름으로 기도드립니다. 아멘</p>
       <div id="link">
         <button idclass="mt-3">insta</button>
         <br />
@@ -139,7 +135,7 @@ const Result = () => {
       </div>
       <div className="logo-container">
         <img
-          src="./img/logo.png"
+          src="./images/logo.png"
           alt="mainImage"
           className="img-fluid logo-image"
         />
