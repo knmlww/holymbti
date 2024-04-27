@@ -52,7 +52,6 @@ const Result = () => {
     },[]);
       
     const moveHome = () => {
-        dispatch({type:"CLEAR_SCORE"})
         navigate('/')
     }
 
