@@ -21,9 +21,16 @@ const Result = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
+    const [isKakaoBrower, setKakaoBrower] = useState(false);
+
+
     const { search } = useParams();
 
     useEffect(()=>{
+
+      const isKakao = navigator.userAgent.match("KAKAOTALK"); 
+      console.log(navigator.userAgent); 
+      setKakaoBrower(Boolean(isKakao)); 
 
         const url = `/searchResult/${search}`;
         axios.get(url, {
@@ -49,8 +56,37 @@ const Result = () => {
         navigate('/')
     }
 
+
     const moveInstagram = (url) => {
-      window.open(url, "_blank", "noopener, noreferrer");
+      if(isKakaoBrower){
+        window.open('kakaotalk://web/openExternal?url='+url, "_blank", "noopener, noreferrer");
+      }else{
+        window.open(url, "_blank", "noopener, noreferrer");
+      }
+
+  }
+
+  const getBrowser = () => {
+    const browsers = [
+      'Chrome', 'Opera',
+      'WebTV', 'Whale',
+      'Beonex', 'Chimera',
+      'NetPositive', 'Phoenix',
+      'Firefox', 'Safari',
+      'SkipStone', 'Netscape', 'Mozilla',
+    ];
+  
+    const userAgent = window.navigator.userAgent.toLowerCase();
+  
+    if (userAgent.includes("edg")) {
+      return "Edge";
+    }
+  
+    if (userAgent.includes("trident") || userAgent.includes("msie")) {
+      return "Internet Explorer";
+    }
+  
+    return browsers.find((browser) => userAgent.includes(browser.toLowerCase())) || 'Other';
   }
 
   const handleCopyClipBoard = async (text) => {
@@ -125,7 +161,7 @@ const Result = () => {
       
       </section>
       <div id="link">
-        <button idclass="mt-3">insta</button>
+        <button idclass="mt-3"onClick={() => moveInstagram("https://www.instagram.com/theholyspirit_fg")}>insta</button>
         <br />
         <button className="mx-auto mt-1">main</button>
       </div>
