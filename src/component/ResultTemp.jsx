@@ -57,7 +57,6 @@ const Result = () => {
       await navigator.clipboard.writeText(text);
       alert("클립보드에 링크가 복사되었어요.");
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -71,7 +70,6 @@ const Result = () => {
       if (!kakao.isInitialized()) {
         kakao.init(process.env.REACT_APP_KAKAO_KEY);
       }
-      console.log(Kakao);
       Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
