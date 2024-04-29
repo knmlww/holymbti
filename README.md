@@ -36,7 +36,7 @@ https://github.com/knmlww/holymbti_API.git
 
 * 김지윤 - 디자인, 프론트엔드 개발
 * 라선경 - 기획, 디자인
-* 이상렬 - 기획, DBMS 설계, 프론트엔드 개발, 백엔드 개발
+* 이상렬 - 기획, 디자인, DBMS 설계, 프론트엔드 개발, 백엔드 개발
 
 <!--
 * [Name](Link) - Create README.md
