@@ -26,7 +26,7 @@ https://github.com/knmlww/holymbti.git
 ```bash
 npm install
 ```
-3. clone API repository [API_LINK](https://github.com/knmlww/holymbti_API)
+3. clone API repository [api repository](https://github.com/knmlww/holymbti_API)
 
 ```bash
 https://github.com/knmlww/holymbti_API.git
