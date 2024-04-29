@@ -32,6 +32,18 @@ npm install
 https://github.com/knmlww/holymbti_API.git
 ```
 
+4. gradle bootrun
+
+```bash
+gradle bootrun
+```
+
+5. npm start
+
+```bash
+ npm start
+```
+
 ## 팀원 구성
 
 * 김지윤 - 디자인, 프론트엔드 개발
