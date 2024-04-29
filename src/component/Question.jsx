@@ -46,7 +46,7 @@ const Question = (props) => {
       if(questionIndex != 11){
         setQuestionIndex(questionIndex+1);
       }
-      }, 1000);
+      }, 800);
     } 
 
 

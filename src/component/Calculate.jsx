@@ -119,7 +119,8 @@ const Calculate = (props) => {
         'fresult' : f_result,
         'jresult' : j_result,
         'presult' : p_result,
-        'imgName' : generatedImage
+        'imgName' : generatedImage,
+        'imgUrl'  : '123'
 
     };
 
@@ -142,7 +143,7 @@ const Calculate = (props) => {
 
     setTimeout(() => {
       generateMBTI();
-      }, 5000);
+      }, 6000);
   },[])
 
 
@@ -162,7 +163,7 @@ const Calculate = (props) => {
   return (
     <div id='calculate' className='calculate'>
         <div id='image' className='calculate-image-container'>
-            <img src={require(`../images/sword${swordCount}.jpg`)} alt="q1Image" className={'img-fluid '} style={{ width: "30%" }}/>
+            <img src={require(`../images/sword_move.gif`)} alt="q1Image" className={'img-fluid '} style={{ width: "30%" }}/>
         <p className='loading'>말씀의 검 만드는 중...</p>
         </div>
 

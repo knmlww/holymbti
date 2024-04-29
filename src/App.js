@@ -5,6 +5,7 @@ import Calculate from './component/Calculate';
 import './css/App.css';
 
 import Result from './component/Result'
+import Result2 from './component/ResultTemp'
 
 const App = () => {
   const [path, setPath] = useState("");
@@ -17,9 +18,8 @@ const App = () => {
       <Routes>
       <Route path='' element={<Home/>}/>
       <Route path='/calculate' element={<Calculate/>}/>
-      <Route path='/result2' element={<Result/>}/>
       <Route path='/searchResult'>
-        <Route path=':search' element={<Result/>}/>
+        <Route path=':search' element={<Result2/>}/>
       </Route>
       </Routes>
     )

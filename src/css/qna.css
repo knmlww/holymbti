@@ -72,24 +72,24 @@
 
     .fade-in {
       opacity: 1;
-      animation: fadeIn ease-in-out 1s;
+      animation: fadeIn ease-in-out 0.8s;
     }
     
     .fade-out {
       opacity: 0;
-      animation: fadeOut ease-in-out 1s;
+      animation: fadeOut ease-in-out 0.8s;
     }
 
     .btn-fade-in {
       opacity: 1;
-      animation: fadeIn ease-in-out 1s;
+      animation: fadeIn ease-in-out 0.8s;
       color: white;
       background-color: #4b1360;
     }
     
     .btn-fade-out {
       opacity: 0;
-      animation: fadeOut ease-in-out 1s;
+      animation: fadeOut ease-in-out 0.8s;
       background-color: #fca32d;
       color: #000;
     }
