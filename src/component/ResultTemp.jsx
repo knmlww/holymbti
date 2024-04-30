@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate ,useLocation, useSearchParams,useParams } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
 import axios from 'axios';
-import '../css/App.css';    
-import '../css/button.css'
+import '../css/main.css';
+import '../css/default.css';
+import '../css/final.css';
 
 const Result = () => {
     let navigate = useNavigate();
@@ -107,19 +108,21 @@ const Result = () => {
 
     return (
         
-      <div className="App">
+      <div id='final' className="final">
         {data?
         <>
-        <h2>나에게 필요한 말씀의 검은?</h2>
-        <p>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
+        <img id="resultTop"	className='resultTop' src={require(`../images/resultTop.png`)} alt="resultTop"/>
+        <p className='bible'>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
       
         <div className="mbti-result">
-            <p>나와 같은 MBTI 유형의 수는 <span>{resultCnt}</span>명 입니다!</p>
-            <p>당신에게 필요한 말씀의 검의 유형은 곧 추가될 예정입니다!</p>
-            {imgSrc?<img id="resultImage" width="431" height="431"	src={require(`../images/${imgSrc}.jpg`)} alt={imgSrc}/>:null}
-
-            <p style={{fontWeight: 'bold' }}>다른 유형은 홀스 공식 계정에서 확인하세요!</p>
+          <img id="resultImage" width="431" height="431"	src={require(`../images/INTJ1.jpg`)} alt='INTJ1'/>
+            <p className='bible'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
+        <div className='download-container'>
+        <button className="download-button" onClick={() => moveInstagram("https://www.instagram.com/theholyspirit_fg")}>
+        이미지 다운로드</button>
+        </div>
+{/*
         <div className='result-button-container'>
         <button className="button" onClick={() => moveInstagram("https://www.instagram.com/theholyspirit_fg")}>
         홀스 성회 인스타그램</button>
@@ -130,7 +133,9 @@ const Result = () => {
         <button className="button" onClick={()=>shareKakao()}>
         카카오톡 공유하기</button>
         </div>
-
+        */
+        }
+        <img id="ccmImage" width="431" height="431"	src={require(`../images/ccm.png`)} alt='ccm'/>
         </>
          :null
          }

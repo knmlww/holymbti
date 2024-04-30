@@ -1,11 +1,55 @@
-#final{background-color: #fcf4e8;
+/*#final{background-color: #fcf4e8;
     width: 90%;
     text-align: center;}
+*/
 
+.final{
+    display: block;
+    max-width: 430px;
+    margin: 0 auto;
+    background: #fcf4e8;
+  }  
+  /*
 #final p{
     font-family:'GangwonEdu_OTFBoldA' ;
-    font-size: small;
-    padding-top: 10%;}    
+    font-size: large;
+
+    padding-top: 10%;}   
+ */   
+.bible{
+    position: relative;
+    text-align: center;
+    font-family:'GangwonEdu_OTFBoldA' ;
+    padding-top: 5%;    
+}    
+
+.download-container{
+    position: relative;
+    text-align: center;
+    
+}    
+
+.download-button {
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #4b1360;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+  }
+
+.ccm-container{
+    position: relative;
+    text-align: center;
+    
+}   
 
 #final h3{
     font-size: small;
@@ -22,6 +66,9 @@
         margin-top: -10px; /* 원하는 크기로 상단 마진 조절 */
     }
 
+.resultTop{
+    width: 100%;
+}
 @font-face {
     font-family: "Dovemayo_gothic";
     font-weight: normal;
