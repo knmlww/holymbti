@@ -111,11 +111,12 @@ const Result = () => {
       <div id='final' className="final">
         {data?
         <>
-        <img id="resultTop"	className='resultTop' src={require(`../images/resultTop.png`)} alt="resultTop"/>
-        <p className='bible'>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
-      
+        <div className='bible-section'>
+          <img id="resultTop" className='img-fluid' src={require(`../images/resultTop.png`)} alt="resultTop"/>
+          <p className='bible'>당신의 MBTI 유형은 {resultMBTI} 입니다!</p>
+        </div>
         <div className="mbti-result">
-          <img id="resultImage" width="431" height="431"	src={require(`../images/INTJ1.jpg`)} alt='INTJ1'/>
+          <img id="resultImage" className='img-fluid' width="431" height="431"	src={require(`../images/INTJ1.jpg`)} alt='INTJ1'/>
             <p className='bible'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
@@ -135,7 +136,7 @@ const Result = () => {
         </div>
         */
         }
-        <img id="ccmImage" width="431" height="431"	src={require(`../images/ccm.png`)} alt='ccm'/>
+        <img id="ccmImage" width="431" height="431" className='img-fluid'	src={require(`../images/ccm.png`)} alt='ccm'/>
         </>
          :null
          }
