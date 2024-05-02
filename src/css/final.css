@@ -218,6 +218,21 @@
     margin-bottom: 2%;
   }
 
+  .download-button:active {
+    background-color: #BBA9D9;
+    color: #000;
+  }    
+
+  .last-button:active {
+    background-color: #BBA9D9;
+    color: #000;
+  }    
+
+  .last-button-instagram:active {
+    background-color: #BBA9D9;
+    color: #000;
+  }   
+
   .last-button-instagram{
     width: 16rem;
     padding: 5px 10px;

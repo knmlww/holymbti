@@ -43,7 +43,7 @@
   border: 2px solid #BBA9D9;
   border-radius: 20px;
   line-height: 35px;
-  
+  white-space: pre-wrap;
 }
 
     .fade-in {
@@ -104,8 +104,9 @@
     }    
 */
 .option-container button:active {
-  background-color: #fca32d;
+  background-color: #BBA9D9;
   color: #000;
+
 }    
 
       .qna .logo-container {

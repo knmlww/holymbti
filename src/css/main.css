@@ -32,10 +32,7 @@ h3{
     transition: background-color 0.3s ease;
   }
   
-  /* 버튼 호버 효과 */
-  button:hover {
-    background-color: #fca32d;
-  }
+
 
   /* 버튼 간격을 주기 위한 CSS */
   button-container {
