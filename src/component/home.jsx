@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import '../css/App.css';    
 import Question from './Question';
 import Calculate from './Calculate';
 import Main from './Main';
