@@ -92,14 +92,6 @@ const Question = (props) => {
     }  
     </div>
     {currentQuestion &&(
-      /*
-              currentQuestion.options.map((list,index) => (
-                showQuestion?
-                <Fragment key={list.value}>
-                  <button className={'mt-4'+fadeInOut}  onClick={() => moveNextQuestion(list.value)}>{list.text}</button><br/>
-                </Fragment>:null
-        ) 
-      )*/
       showQuestion?
       <>
       <div className='option-container'>
@@ -109,12 +101,7 @@ const Question = (props) => {
       </div>
       </>:null
     )}
-  {/*
-  <button className="mx-auto mt-2">
-    (오! 나 나온다!) 더욱 열심히 찬양한다.
-  </button>*/
-  }
-  <div className="logo-container">
+    <div className="logo-container">
     <img
       src={require(`../images/logo.png`)}
       alt="mainImage"
