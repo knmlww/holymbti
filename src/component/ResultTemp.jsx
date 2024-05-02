@@ -185,7 +185,7 @@ const Result = () => {
 
         <div className='share-box'>
         <div className='share'>
-        <img src={require(`../images/link-button.png`)} alt="result-logo" onClick={handleCopyClipBoard} className="img-fluid" style={{ width: "20%" }}/>
+        <img src={require(`../images/link-button.png`)} alt="result-logo" onClick={()=>handleCopyClipBoard(`${location}`)} className="img-fluid" style={{ width: "20%" }}/>
         <img  src={require(`../images/kakao.png`)}
             alt="카카오톡 공유 보내기 버튼"
             className="img-fluid"
