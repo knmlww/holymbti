@@ -163,7 +163,7 @@ const Calculate = (props) => {
   return (
     <div id='calculate' className='calculate'>
         <div id='image' className='calculate-image-container'>
-            <img src={require(`../images/sword_move.gif`)} alt="q1Image" className={'img-fluid '} style={{ width: "30%" }}/>
+            <img src={require(`../images/sword_move.gif`)} alt=" sword_move" className='img-fluid' style={{ width: "30%" }}/>
         <p className='loading'>말씀의 검 만드는 중...</p>
         </div>
 

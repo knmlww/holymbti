@@ -1,22 +1,21 @@
-#main{background-color: #fcf4e8;
+/*#main{background-color: #fcf4e8;
 width: 90%;
 text-align: center;
 }
-
+*/
 h3{
   font-weight: bold;
   
 
 }
 
-
-
-.main-container{
+.container{ 
   display: block;
   max-width: 480px;
   margin: 0 auto;
+  text-align: center;
+  background: #fcf4e8;
 }  
-
 
   button {
     display: inline-block;
@@ -33,10 +32,7 @@ h3{
     transition: background-color 0.3s ease;
   }
   
-  /* 버튼 호버 효과 */
-  button:hover {
-    background-color: #fca32d;
-  }
+
 
   /* 버튼 간격을 주기 위한 CSS */
   button-container {
@@ -47,13 +43,14 @@ h3{
   }
   
 
-    .logo-container {
+    .container .logo-container {
         position: relative;
         left: 0;
         right: 0;
         padding-top: 10%;
         text-align: center;
         width: 200px;
+        margin: 0 auto;
     }
     
    

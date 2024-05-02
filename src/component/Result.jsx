@@ -145,7 +145,7 @@ const Result = () => {
 
     return (
         
-      <div id="final" className="container">
+      <div id="final" className="final">
           <img
           src={require(`../images/p-bg/phoneBG.jpg`)}
           alt="phoneBG"

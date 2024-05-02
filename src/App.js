@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './component/Home';
 import Calculate from './component/Calculate';
-import './css/App.css';
+
 
 //import Result from './component/Result'
 import Result2 from './component/ResultTemp'

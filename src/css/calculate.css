@@ -1,12 +1,6 @@
-/*#calculate{background-color: #fcf4e8;
-    width: 90%;
-    text-align: center;
-
-  }
-  */
   .calculate{
     display: block;
-    width: 430px;
+    max-width: 480px;
     margin: 0 auto;
     background: #fcf4e8;
   }  
@@ -18,19 +12,9 @@
     p{
 
     }
-/*
-    .calculate-container{
-        display: flex;
-        margin: 0 auto;
-        padding-top: 20rem;
-        max-width: 450px;
-        height: 200px;
-        justify-content: center;
-        align-items: center;
-      }  
-*/
+
     .calculate-image-container{
-      padding-top: 15%;
+      padding-top: 50%;
       position: relative;
       text-align: center;
     }  
@@ -38,8 +22,7 @@
     .calculate-ing{
       position: relative;
       text-align: center;
-    
-   /*   margin: auto;*/
+
     } 
 
     .loading {
