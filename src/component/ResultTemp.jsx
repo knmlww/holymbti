@@ -36,7 +36,7 @@ const Result = () => {
           }
         })
          .then((res)=>{
-          console.dir(res.data);
+          console.dir(res.data.typeThumbnailImageUrl)
           setResultCnt(res.data.mbtiCount);
           setResultMBTI(res.data.typeDtlName);
           setImgSrc(res.data.typeImgUrl);
@@ -64,21 +64,67 @@ const Result = () => {
 
   const handleCopyClipBoard = async (text) => {
     try {
-      await navigator.clipboard.writeText(text);
+            await navigator.clipboard.writeText(text);
       alert("클립보드에 링크가 복사되었어요.");
     } catch (err) {
     }
   };
 
  
-  const downloadFile = () => {
-    const url = imgSrc
+  async function downloadFile  () {
+    
+    var useragt = navigator.userAgent.toLowerCase();
+		var target_url = "https://www.holymbti.kro.kr";
+		
+		if(useragt.match(/kakaotalk/i)){
+      fetch(imgSrc, { method: 'GET' })
+      .then((res) => {
+          return res.blob();
+      })
+      .then((blob) => {  
+        if (navigator.share) {
+          navigator.share({
+          //  title: 'WebShare API Demo',
+          //  url: 'https://codepen.io/ayoisaiah/pen/YbNazJ',
+          files: [
+            new File([blob], 'file.png', {
+              type: blob.type,
+            }),
+          ],
+          }).then(() => {
+            console.log('Thanks for sharing!');
+          })
+          .catch(console.error);
+        } else {
+
+          blobToBase64(blob).then(res => {
+            // do what you wanna do
+          const a = document.createElement('a');
+          a.href = res;
+          a.download = "img";
+          a.target="_blank"
+          a.filename ="img"
+          document.body.appendChild(a);
+          a.click();
+          setTimeout((_) => {
+              window.URL.revokeObjectURL(url);
+          }, 60000);
+          a.remove(             );
+
+          });
+
+      
+        }               
+      })
+   
+		}else{
   
-    fetch(url, { method: 'GET' })
+    fetch(imgSrc, { method: 'GET' })
         .then((res) => {
             return res.blob();
         })
-        .then((blob) => {
+        .then((blob) => {         
+
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -88,13 +134,26 @@ const Result = () => {
             setTimeout((_) => {
                 window.URL.revokeObjectURL(url);
             }, 60000);
-            a.remove();
-            setOpen(false);
+            a.remove(             );
+
+ 
         })
         .catch((err) => {
             console.error('err: ', err);
         });
+      
+    } 
+
+  
 };
+
+function blobToBase64(blob) {
+  return new Promise((resolve, _) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
 
   const shareKakao = () => {
     const imageUrl = document.getElementById("resultImage").src;
@@ -111,8 +170,8 @@ const Result = () => {
         
         objectType: 'feed',
         content: {
-          title: '나에게 필요한 말씀의 검은?',
-          description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신 갑주를 입으라',
+          title: '6월 1일, 부흥을 위한 성령의 검',
+          description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신갑주를 입으라',
           imageUrl:kakaoUrl,
           imageWidth:800,
           link: {
@@ -158,7 +217,8 @@ const Result = () => {
             <p className='bible-sword'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
-        <button className="download-button" onClick={downloadFile}>
+        <button  className="download-button" onClick={downloadFile}
+        >
         이미지 다운로드</button>
         </div>
           <div className='count-container'>
@@ -185,7 +245,7 @@ const Result = () => {
 
         <div className='share-box'>
         <div className='share'>
-        <img src={require(`../images/link-button.png`)} alt="result-logo" onClick={handleCopyClipBoard} className="img-fluid" style={{ width: "20%" }}/>
+        <img src={require(`../images/link-button.png`)} alt="result-logo" onClick={()=>handleCopyClipBoard(`${location}`)} className="img-fluid" style={{ width: "20%" }}/>
         <img  src={require(`../images/kakao.png`)}
             alt="카카오톡 공유 보내기 버튼"
             className="img-fluid"
