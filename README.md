@@ -1,5 +1,5 @@
 # swordofbible
- 
+ <img src="https://axrxjrmfr7rj.objectstorage.ap-chuncheon-1.oci.customer-oci.com/n/axrxjrmfr7rj/b/bucket-20240430-1953/o/github%20main.jpg">
 [전신갑주 입고 홀스 성회 가자!] 부제 : 나에게 필요한 말씀의 검은?
 
 ## 프로젝트 소개
@@ -13,23 +13,21 @@
           <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white">
 </div>
 
-
-
 ## 설치
 
 1. clone repository
 ```bash
-https://github.com/knmlww/holymbti.git
+https://github.com/knmlww/swordofbible.git
 ```
 
 2. install NPM packages
 ```bash
 npm install
 ```
-3. clone API repository [api repository](https://github.com/knmlww/holymbti_API)
+3. clone API repository [api repository](https://github.com/knmlww/swordofbible_API.git)
 
 ```bash
-https://github.com/knmlww/holymbti_API.git
+https://github.com/knmlww/swordofbible_API.git
 ```
 
 4. gradle bootrun
