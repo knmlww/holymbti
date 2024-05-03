@@ -19,17 +19,17 @@
 
 1. clone repository
 ```bash
-https://github.com/knmlww/holymbti.git
+https://github.com/knmlww/swordofbible.git
 ```
 
 2. install NPM packages
 ```bash
 npm install
 ```
-3. clone API repository [api repository](https://github.com/knmlww/holymbti_API)
+3. clone API repository [api repository](https://github.com/knmlww/swordofbible_API.git)
 
 ```bash
-https://github.com/knmlww/holymbti_API.git
+https://github.com/knmlww/swordofbible_API.git
 ```
 
 4. gradle bootrun
