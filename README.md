@@ -1,5 +1,5 @@
 # swordofbible
- 
+ <img src="https://axrxjrmfr7rj.objectstorage.ap-chuncheon-1.oci.customer-oci.com/n/axrxjrmfr7rj/b/bucket-20240430-1953/o/github%20main.jpg">
 [전신갑주 입고 홀스 성회 가자!] 부제 : 나에게 필요한 말씀의 검은?
 
 ## 프로젝트 소개
@@ -12,8 +12,6 @@
           <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
           <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white">
 </div>
-
-
 
 ## 설치
 
