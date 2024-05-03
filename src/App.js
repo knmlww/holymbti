@@ -4,8 +4,7 @@ import Home from './component/Home';
 import Calculate from './component/Calculate';
 
 
-//import Result from './component/Result'
-import Result2 from './component/ResultTemp'
+import Result from './component/Result'
 
 const App = () => {
 
@@ -14,7 +13,7 @@ const App = () => {
       <Route path='' element={<Home/>}/>
       <Route path='/calculate' element={<Calculate/>}/>
       <Route path='/searchResult'>
-        <Route path=':search' element={<Result2/>}/>
+        <Route path=':search' element={<Result/>}/>
       </Route>
       </Routes>
     )
