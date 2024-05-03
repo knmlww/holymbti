@@ -170,7 +170,7 @@ function blobToBase64(blob) {
         
         objectType: 'feed',
         content: {
-          title: '6월 1일, 부흥을 위한 성령의 검',
+          title: '6월 1일, 부흥을 위한 말씀의 검',
           description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신갑주를 입으라',
           imageUrl:kakaoUrl,
           imageWidth:800,
