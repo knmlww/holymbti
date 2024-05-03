@@ -1,4 +1,4 @@
-# swordfor2024thsf 
+# swordofbible
  
 [전신갑주 입고 홀스 성회 가자!] 부제 : 나에게 필요한 말씀의 검은?
 
