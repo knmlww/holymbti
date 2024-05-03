@@ -36,7 +36,7 @@ const Result = () => {
           }
         })
          .then((res)=>{
-          console.dir(res.data);
+          console.dir(res.data.typeThumbnailImageUrl)
           setResultCnt(res.data.mbtiCount);
           setResultMBTI(res.data.typeDtlName);
           setImgSrc(res.data.typeImgUrl);
@@ -64,7 +64,7 @@ const Result = () => {
 
   const handleCopyClipBoard = async (text) => {
     try {
-      await navigator.clipboard.writeText(text);
+            await navigator.clipboard.writeText(text);
       alert("클립보드에 링크가 복사되었어요.");
     } catch (err) {
     }
@@ -72,13 +72,22 @@ const Result = () => {
 
  
   const downloadFile = () => {
-    const url = imgSrc
+    
+    var useragt = navigator.userAgent.toLowerCase();
+		var target_url = imgSrc;
+		
+		if(useragt.match(/kakaotalk/i)){
+			
+			//카카오톡 외부브라우저로 호출
+			location.href = 'kakaotalk://web/openExternal?url='+encodeURIComponent(target_url);
+			
+		}else{
   
-    fetch(url, { method: 'GET' })
+    fetch(imgSrc, { method: 'GET' })
         .then((res) => {
             return res.blob();
         })
-        .then((blob) => {
+        .then((blob) => {                 
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -88,12 +97,13 @@ const Result = () => {
             setTimeout((_) => {
                 window.URL.revokeObjectURL(url);
             }, 60000);
-            a.remove();
-            setOpen(false);
+            a.remove(             );
         })
         .catch((err) => {
             console.error('err: ', err);
         });
+      
+    }
 };
 
   const shareKakao = () => {
@@ -111,8 +121,8 @@ const Result = () => {
         
         objectType: 'feed',
         content: {
-          title: '나에게 필요한 말씀의 검은?',
-          description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신 갑주를 입으라',
+          title: '6월 1일, 부흥을 위한 성령의 검',
+          description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신갑주를 입으라',
           imageUrl:kakaoUrl,
           imageWidth:800,
           link: {
