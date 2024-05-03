@@ -71,23 +71,60 @@ const Result = () => {
   };
 
  
-  const downloadFile = () => {
+  async function downloadFile  () {
     
     var useragt = navigator.userAgent.toLowerCase();
-		var target_url = imgSrc;
+		var target_url = "https://www.holymbti.kro.kr";
 		
 		if(useragt.match(/kakaotalk/i)){
-			
-			//카카오톡 외부브라우저로 호출
-			location.href = 'kakaotalk://web/openExternal?url='+encodeURIComponent(target_url);
-			
+      fetch(imgSrc, { method: 'GET' })
+      .then((res) => {
+          return res.blob();
+      })
+      .then((blob) => {  
+        if (navigator.share) {
+          navigator.share({
+          //  title: 'WebShare API Demo',
+          //  url: 'https://codepen.io/ayoisaiah/pen/YbNazJ',
+          files: [
+            new File([blob], 'file.png', {
+              type: blob.type,
+            }),
+          ],
+          }).then(() => {
+            console.log('Thanks for sharing!');
+          })
+          .catch(console.error);
+        } else {
+
+          blobToBase64(blob).then(res => {
+            // do what you wanna do
+          const a = document.createElement('a');
+          a.href = res;
+          a.download = "img";
+          a.target="_blank"
+          a.filename ="img"
+          document.body.appendChild(a);
+          a.click();
+          setTimeout((_) => {
+              window.URL.revokeObjectURL(url);
+          }, 60000);
+          a.remove(             );
+
+          });
+
+      
+        }               
+      })
+   
 		}else{
   
     fetch(imgSrc, { method: 'GET' })
         .then((res) => {
             return res.blob();
         })
-        .then((blob) => {                 
+        .then((blob) => {         
+
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -98,13 +135,25 @@ const Result = () => {
                 window.URL.revokeObjectURL(url);
             }, 60000);
             a.remove(             );
+
+ 
         })
         .catch((err) => {
             console.error('err: ', err);
         });
       
-    }
+    } 
+
+  
 };
+
+function blobToBase64(blob) {
+  return new Promise((resolve, _) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
 
   const shareKakao = () => {
     const imageUrl = document.getElementById("resultImage").src;
@@ -168,7 +217,8 @@ const Result = () => {
             <p className='bible-sword'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
-        <button className="download-button" onClick={downloadFile}>
+        <button  className="download-button" onClick={downloadFile}
+        >
         이미지 다운로드</button>
         </div>
           <div className='count-container'>
