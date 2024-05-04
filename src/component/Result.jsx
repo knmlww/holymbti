@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate ,useLocation, useSearchParams,useParams } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
+import {blobToBase64} from '../common/Utils';
 import axios from 'axios';
 import '../css/main.css';
 import '../css/default.css';
@@ -71,7 +72,7 @@ const Result = () => {
   };
 
  
-  async function downloadFile  () {
+  const downloadFile = async () => {
     
     var useragt = navigator.userAgent.toLowerCase();
 		var target_url = "https://www.holymbti.kro.kr";
@@ -147,13 +148,6 @@ const Result = () => {
   
 };
 
-function blobToBase64(blob) {
-  return new Promise((resolve, _) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.readAsDataURL(blob);
-  });
-}
 
   const shareKakao = () => {
     const imageUrl = document.getElementById("resultImage").src;
