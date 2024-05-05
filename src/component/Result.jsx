@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate ,useLocation, useSearchParams,useParams } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
+import {blobToBase64, getBrowser} from '../common/Utils';
 import axios from 'axios';
 import '../css/main.css';
 import '../css/default.css';
@@ -58,8 +59,14 @@ const Result = () => {
         navigate('/')
     }
 
-    const moveInstagram = (url) => {
-      window.open(url, "_blank", "noopener, noreferrer");
+    const movePage = (url) => {
+      const browser = getBrowser();
+      if(navigator.userAgent.match("KAKAOTALK") && browser == 'safari'){
+          window.open('kakaotalk://web/openExternal?url='+url, "_blank", "noopener, noreferrer");
+ 
+      }else{
+        window.open(url, "_blank", "noopener, noreferrer");
+      }
   }
 
   const handleCopyClipBoard = async (text) => {
@@ -71,7 +78,7 @@ const Result = () => {
   };
 
  
-  async function downloadFile  () {
+  const downloadFile = async () => {
     
     var useragt = navigator.userAgent.toLowerCase();
 		var target_url = "https://www.holymbti.kro.kr";
@@ -147,13 +154,6 @@ const Result = () => {
   
 };
 
-function blobToBase64(blob) {
-  return new Promise((resolve, _) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.readAsDataURL(blob);
-  });
-}
 
   const shareKakao = () => {
     const imageUrl = document.getElementById("resultImage").src;
@@ -232,12 +232,12 @@ function blobToBase64(blob) {
         <img id="ccmImage" className='img-fluid ccm-img'	src={ccmImgSrc} alt='ccm'/>
         </div>
 
-        <button className="download-button" onClick={() => moveInstagram(ccmUrl)}>
+        <button className="download-button" onClick={() => movePage(ccmUrl)}>
         들으러 가기</button>
         <div className='last-button-container'>
-        <button className="last-button"  onClick={() => moveInstagram("http://www.youthfg.com/since/1")}>홀스 홈페이지 바로가기</button>  
+        <button className="last-button"  onClick={() => movePage("http://www.youthfg.com/since/1")}>홀스 홈페이지 바로가기</button>  
         <br/> 
-        <button className="last-button-instagram" onClick={() => moveInstagram("https://www.instagram.com/theholyspirit_fg")}>홀스 인스타 바로가기</button>  
+        <button className="last-button-instagram" onClick={() => movePage("https://www.instagram.com/theholyspirit_fg")}>홀스 인스타 바로가기</button>  
         <br/>
         <button className="last-button" onClick={() => moveHome("https://www.instagram.com/theholyspirit_fg")}>테스트 다시하기</button>  
         </div>
