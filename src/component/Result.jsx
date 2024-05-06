@@ -61,7 +61,7 @@ const Result = () => {
 
     const movePage = (url) => {
       const browser = getBrowser();
-      if(navigator.userAgent.match("KAKAOTALK") && browser == 'safari'){
+      if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
           window.open('kakaotalk://web/openExternal?url='+url, "_blank", "noopener, noreferrer");
  
       }else{
