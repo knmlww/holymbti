@@ -33,16 +33,6 @@ h3{
   }
   
 
-
-  /* 버튼 간격을 주기 위한 CSS */
-  button-container {
-    padding: 100px 200px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* 버튼 사이의 간격을 설정하세요 (원하는 크기로 조정 가능) */
-  }
-  
-
     .container .logo-container {
         position: relative;
         left: 0;
