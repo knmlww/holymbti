@@ -109,7 +109,6 @@ const Calculate = (props) => {
 
     const url = '/holymbti/insertResult';
     const data = {
-        "issueNum" : generatedNumber,
         'mbtiResult' : result,
         'iresult' : i_result,
         'eresult' : e_result,
@@ -131,7 +130,7 @@ const Calculate = (props) => {
         // 성공 처리
         dispatch({type: 'SAVE_RESULT',payload:result});
        // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
-       navigate(`/searchResult/${generatedNumber}` ,{ state: generatedNumber });
+       navigate(`/searchResult/${res.data.issueNum}` ,{ state: generatedNumber });
     }).catch(err => {
       // 에러 처리
       //console.dir(err);// --> 서버단 에러메세지 출력~
