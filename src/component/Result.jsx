@@ -15,16 +15,8 @@ const Result = () => {
     const location = window.location.href;
     
     const [data , setData] = useState(false);
-    const [resultMBTI, setResultMBTI] = useState("");
-    const [resultCnt, setResultCnt] = useState(null);
-    const [imgSrc, setImgSrc] = useState(null);
-    const [ccmImgSrc, setCcmImgSrc] = useState(null);
-    const [issueNum, setIssueNum] = useState(null);
-    const [ccmUrl, setCcmUrl] = useState(null);
-    const [kakaoUrl, setKakaoUrl] = useState(null);
-    const [bibleChar, setBibleChar] = useState(null);
+    const [type, setType] = useState(null);
 
-    const [bible, setBible] = useState(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -38,18 +30,7 @@ const Result = () => {
           }
         })
          .then((res)=>{
-
-          setResultCnt(res.data.mbtiCount);
-          setResultMBTI(res.data.typeDtlName);
-          setImgSrc(res.data.typeImgUrl);
-          setIssueNum(res.data.issueNum);
-          setResultCnt(res.data.mbtiCount);
-          setBible(res.data.typePray)
-          setCcmUrl(res.data.typeCcmUrl)
-          setCcmImgSrc(res.data.typeCcmImgUrl);
-          setKakaoUrl(res.data.typeThumbnailImageUrl);
-          setBibleChar(res.data.typeDesc);
-          
+          setType(res.data);
           setData(true)
          }).catch((error)=>{
           setData(false);
@@ -87,7 +68,7 @@ const Result = () => {
 		var target_url = "https://www.holymbti.kro.kr";
 		
 		if(useragt.match(/kakaotalk/i)){
-      fetch(imgSrc, { method: 'GET' })
+      fetch(type.typeImgUrl, { method: 'GET' })
       .then((res) => {
           return res.blob();
       })
@@ -102,7 +83,6 @@ const Result = () => {
             }),
           ],
           }).then(() => {
-            console.log('Thanks for sharing!');
           })
           .catch(console.error);
         } else {
@@ -129,7 +109,7 @@ const Result = () => {
    
 		}else{
   
-    fetch(imgSrc, { method: 'GET' })
+    fetch(type.typeImgUrl, { method: 'GET' })
         .then((res) => {
             return res.blob();
         })
@@ -161,7 +141,7 @@ const Result = () => {
   const shareKakao = () => {
     const imageUrl = document.getElementById("resultImage").src;
     
-    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${issueNum}`;
+    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${type.issueNum}`;
 
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -212,11 +192,11 @@ const Result = () => {
         <div className='bible-section'>
           <img id="resultTop" className='img-fluid' src={require(`../images/link5.jpg`)} alt="resultTop"/>
 
-            <p className='bible'>{bible}</p> 
+            <p className='bible'>{type.typePray}</p> 
         </div>
      
         <div className="mbti-result">
-          <img id="resultImage" className='img-fluid' style={{width:"431px"}}	src={imgSrc} alt={resultMBTI}/>
+          <img id="resultImage" className='img-fluid' style={{width:"431px"}}	src={type.typeImgUrl} alt={type.typeName}/>
             <p className='bible-sword'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
@@ -225,15 +205,14 @@ const Result = () => {
         이미지 다운로드</button>
         </div>
           <div className='bible-char-container'>
-          <img id="bible-character" className='img-fluid ccm-img'	src={bibleChar} alt='bible-character'/>
+          <img id="bible-character" className='img-fluid ccm-img'	src={type.typeDesc} alt='bible-character'/>
           </div>
 
          
         <div className='ccm-img-container'>
-        <img id="ccmImage" className='img-fluid ccm-img'	src={ccmImgSrc} alt='ccm'/>
+        <img id="ccmImage" className='img-fluid ccm-img'	src={type.typeCcmImgUrl} alt='ccm'/>
         </div>
-
-        <button className="listen-button" onClick={() => movePage(ccmUrl)}>
+        <button className="listen-button" onClick={() => movePage(type.typeCcmUrl)}>
         들으러 가기</button>
         <div className='last-button-container'>
         <button className="last-button"  onClick={() => movePage("http://www.youthfg.com/since/1")}>홀스 홈페이지 바로가기</button>  
