@@ -22,6 +22,7 @@ const Result = () => {
     const [issueNum, setIssueNum] = useState(null);
     const [ccmUrl, setCcmUrl] = useState(null);
     const [kakaoUrl, setKakaoUrl] = useState(null);
+    const [bibleChar, setBibleChar] = useState(null);
 
     const [bible, setBible] = useState(null);
 
@@ -37,7 +38,7 @@ const Result = () => {
           }
         })
          .then((res)=>{
-          console.dir(res.data.typeThumbnailImageUrl)
+
           setResultCnt(res.data.mbtiCount);
           setResultMBTI(res.data.typeDtlName);
           setImgSrc(res.data.typeImgUrl);
@@ -47,6 +48,8 @@ const Result = () => {
           setCcmUrl(res.data.typeCcmUrl)
           setCcmImgSrc(res.data.typeCcmImgUrl);
           setKakaoUrl(res.data.typeThumbnailImageUrl);
+          setBibleChar(res.data.typeDesc);
+          
           setData(true)
          }).catch((error)=>{
           setData(false);
@@ -207,7 +210,7 @@ const Result = () => {
         {data?
         <>
         <div className='bible-section'>
-          <img id="resultTop" className='img-fluid' src={require(`../images/resultTop.png`)} alt="resultTop"/>
+          <img id="resultTop" className='img-fluid' src={require(`../images/link5.jpg`)} alt="resultTop"/>
 
             <p className='bible'>{bible}</p> 
         </div>
@@ -221,10 +224,8 @@ const Result = () => {
         >
         이미지 다운로드</button>
         </div>
-          <div className='count-container'>
-            <div className='countBox'>
-              <p className='count-section'>나와 같은 검을 가진 사람의 수<span className='mbti-count'>{resultCnt}명</span></p>        
-            </div>
+          <div className='bible-char-container'>
+          <img id="bible-character" className='img-fluid ccm-img'	src={bibleChar} alt='bible-character'/>
           </div>
 
          
@@ -232,7 +233,7 @@ const Result = () => {
         <img id="ccmImage" className='img-fluid ccm-img'	src={ccmImgSrc} alt='ccm'/>
         </div>
 
-        <button className="download-button" onClick={() => movePage(ccmUrl)}>
+        <button className="listen-button" onClick={() => movePage(ccmUrl)}>
         들으러 가기</button>
         <div className='last-button-container'>
         <button className="last-button"  onClick={() => movePage("http://www.youthfg.com/since/1")}>홀스 홈페이지 바로가기</button>  
