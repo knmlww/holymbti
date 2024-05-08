@@ -9,11 +9,11 @@ import '../css/default.css';
 import '../css/final.css';
 
 const Result = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch(); 
 
     const location = window.location.href;
-    
+
     const [data , setData] = useState(false);
     const [type, setType] = useState(null);
 
@@ -39,8 +39,17 @@ const Result = () => {
     },[]);
       
     const moveHome = () => {
-        dispatch({type:"CLEAR_SCORE"})
+      const browser = getBrowser();
+      dispatch({type:"CLEAR_SCORE"})
+      if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+        const a = document.createElement('a');
+        a.href = '/';
+        document.body.appendChild(a);
+        a.click();
+      }
+      else{
         navigate('/')
+      }
     }
 
     const movePage = (url) => {
@@ -78,7 +87,7 @@ const Result = () => {
           //  title: 'WebShare API Demo',
           //  url: 'https://codepen.io/ayoisaiah/pen/YbNazJ',
           files: [
-            new File([blob], 'file.png', {
+            new File([blob], 'file.jpg', {
               type: blob.type,
             }),
           ],
@@ -155,7 +164,7 @@ const Result = () => {
         content: {
           title: '6월 1일, 부흥을 위한 말씀의 검',
           description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신갑주를 입으라',
-          imageUrl:kakaoUrl,
+          imageUrl:type.typeThumbnailImageUrl,
           imageWidth:800,
           link: {
             // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
@@ -190,8 +199,7 @@ const Result = () => {
         {data?
         <>
         <div className='bible-section'>
-          <img id="resultTop" className='img-fluid' src={require(`../images/link5.jpg`)} alt="resultTop"/>
-
+          <img id="resultTop" className='img-fluid' src={require(`../images/type5.jpg`)} alt="resultTop"/>
             <p className='bible'>{type.typePray}</p> 
         </div>
      
