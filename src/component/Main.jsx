@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch} from "react-redux";
 
 
 import '../css/main.css';
 import '../css/default.css';
-import axios from 'axios';
 
 const Main = (props) => {
 
   const dispatch = useDispatch();
-
-  const [resultMember, setResultMember] = useState(0);
-  const [data , setData] = useState(false);
 
   useEffect(()=>{
     dispatch({type:"CLEAR_SCORE"})
@@ -22,7 +18,6 @@ const Main = (props) => {
   }
   return (
   <div className="container">
-    {//data?
     <section className="mx-auto mt-2">
       <h3 className="mx-auto mb-4">전신갑주 입고<br/> 홀스 성회 가자</h3>
         <div className="col-5 mx-auto col-md-5 col-sm-5 col-12">
@@ -38,8 +33,6 @@ const Main = (props) => {
         />
       </div>
     </section>
-   // :null
-    }
   </div>
  
   );
