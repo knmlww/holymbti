@@ -15,14 +15,6 @@ const Main = (props) => {
 
   useEffect(()=>{
     dispatch({type:"CLEAR_SCORE"})
-
-    axios.post("holymbti/getResultMember")
-         .then((res)=>{
-          setResultMember(res.data);
-          setData(true);
-         }).catch((error)=>{
-          setData(false);
-         })
   },[])
 
   const moveStart = () => {
