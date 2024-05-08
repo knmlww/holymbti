@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch , useSelector} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
-
+import {getBrowser} from '../common/Utils';
 import '../css/main.css';
 import '../css/default.css';
 import '../css/calculate.css'
@@ -110,10 +110,18 @@ const Calculate = (props) => {
 
     axios.post(url,data,config)
       .then(res => {
+        const browser = getBrowser();
         // 성공 처리
         dispatch({type: 'SAVE_RESULT',payload:result});
        // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
+       if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+        const a = document.createElement('a');
+        a.href = `/searchResult/${res.data.issueNum}`;
+        document.body.appendChild(a);
+        a.click();
+       }else{
        navigate(`/searchResult/${res.data.issueNum}`);
+       }
     }).catch(err => {
       // 에러 처리
       //console.dir(err);// --> 서버단 에러메세지 출력~
