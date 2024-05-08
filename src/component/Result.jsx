@@ -191,7 +191,7 @@ const Result = () => {
         {data?
         <>
         <div className='bible-section'>
-          <img id="resultTop" className='img-fluid' src={require(`../images/resultTop.png`)} alt="resultTop"/>
+          <img id="resultTop" className='img-fluid' src={require(`../images/type5.jpg`)} alt="resultTop"/>
 
             <p className='bible'>{type.typePray}</p> 
         </div>
