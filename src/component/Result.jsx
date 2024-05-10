@@ -73,76 +73,31 @@ const Result = () => {
 
  
   const downloadFile = async () => {
-    
+    const browser = getBrowser();
     var useragt = navigator.userAgent.toLowerCase();
-		var target_url = "https://www.holymbti.kro.kr";
+		const target_url = 'https://www.holymbti.kro.kr/download?image='+type.typeDtlName+'.jpg';
 		
 		if(useragt.match(/kakaotalk/i)){
-      fetch(type.typeImgUrl, { method: 'GET' })
-      .then((res) => {
-          return res.blob();
-      })
-      .then((blob) => {  
-        if (navigator.share) {
-          navigator.share({
-          //  title: 'WebShare API Demo',
-          //  url: 'https://codepen.io/ayoisaiah/pen/YbNazJ',
-          files: [
-            new File([blob], 'file.jpg', {
-              type: blob.type,
-            }),
-          ],
-          }).then(() => {
-          })
-          .catch(console.error);
-        } else {
-
-          blobToBase64(blob).then(res => {
-            // do what you wanna do
-          const a = document.createElement('a');
-          a.href = res;
-          a.download = "img";
-          a.target="_blank"
-          a.filename ="img"
-          document.body.appendChild(a);
-          a.click();
-          setTimeout((_) => {
-              window.URL.revokeObjectURL(url);
-          }, 60000);
-          a.remove(             );
-
-          });
-
-      
-        }               
-      })
-   
-		}
-    else{
-  
-    fetch(type.typeImgUrl, { method: 'GET' })
-        .then((res) => {
-            return res.blob();
-        })
-        .then((blob) => {         
-
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "말씀의 검";
-            document.body.appendChild(a);
-            a.click();
-            setTimeout((_) => {
-                window.URL.revokeObjectURL(url);
-            }, 60000);
-            a.remove(             );
-
+        if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+          window.location.href= target_url;
  
-        })
-        .catch((err) => {
-            console.error('err: ', err);
-        });
-      
+      }
+      else {
+          window.location.href='intent://'+target_url.replace(/https?:\/\//i,'')+'#Intent;scheme=http;package=com.android.chrome;end';
+        }               
+
+		}else if(useragt.match(/instagram/i)){
+      if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+        window.open(target_url, "_blank", "noopener, noreferrer");
+
+    }
+    else {
+        window.location.href='intent://'+target_url.replace(/https?:\/\//i,'')+'#Intent;scheme=http;package=com.android.chrome;end';
+      }               
+
+    }
+    else{
+     window.location.href = target_url;
     } 
 
   
@@ -206,7 +161,7 @@ const Result = () => {
         </div>
      
         <div className="mbti-result">
-          <img id="resultImage" style={{width:"431px"}}	src={require(`../images/background/${type.typeDtlName}.jpg`)} alt={type.typeName}/>
+          <img id="resultImage" style={{width:"100%"}}	src={require(`../images/background/${type.typeDtlName}.jpg`)} alt={type.typeName}/>
             <p className='bible-sword'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
