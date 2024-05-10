@@ -133,7 +133,7 @@ const Calculate = (props) => {
 
     setTimeout(() => {
       generateMBTI();
-      }, 6000);
+      }, 4000);
   },[])
 
   return (
