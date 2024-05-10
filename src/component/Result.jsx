@@ -87,7 +87,7 @@ const Result = () => {
         }               
 
 		}else if(useragt.match(/instagram/i)){
-      if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+      if(useragt.match(/iphone|ipad|ipod/i)){
         window.open(target_url, "_blank", "noopener, noreferrer");
 
     }
