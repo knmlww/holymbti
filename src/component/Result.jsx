@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate ,useLocation, useSearchParams,useParams } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
-import {blobToBase64, getBrowser} from '../common/Utils';
+import {blobToBase64, getBrowser, b64toBlob} from '../common/Utils';
 import axios from 'axios';
 import '../css/main.css';
 import '../css/default.css';
@@ -17,7 +17,8 @@ const Result = () => {
     const [data , setData] = useState(false);
     const [type, setType] = useState(null);
 
-
+    const [bibleUrl, setBibleUrl] = useState(null);
+    const [descUrl, setDescUrl] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
 
     const { search } = useParams();
@@ -116,7 +117,8 @@ const Result = () => {
         }               
       })
    
-		}else{
+		}
+    else{
   
     fetch(type.typeImgUrl, { method: 'GET' })
         .then((res) => {
@@ -164,7 +166,7 @@ const Result = () => {
         content: {
           title: '6월 1일, 부흥을 위한 말씀의 검',
           description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신갑주를 입으라',
-          imageUrl:type.typeThumbnailImageUrl,
+          imageUrl:`data:image/jpeg;base64,`+type.typeThumbnailImageUrl,
           imageWidth:800,
           link: {
             // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
@@ -204,7 +206,7 @@ const Result = () => {
         </div>
      
         <div className="mbti-result">
-          <img id="resultImage" className='img-fluid' style={{width:"431px"}}	src={type.typeImgUrl} alt={type.typeName}/>
+          <img id="resultImage" style={{width:"431px"}}	src={require(`../images/background/${type.typeDtlName}.jpg`)} alt={type.typeName}/>
             <p className='bible-sword'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
@@ -213,12 +215,12 @@ const Result = () => {
         이미지 다운로드</button>
         </div>
           <div className='bible-char-container'>
-          <img id="bible-character" className='img-fluid ccm-img'	src={type.typeDesc} alt='bible-character'/>
+          <img id="bible-character" className='img-fluid ccm-img'	src={require(`../images/bibleChar/CHAR_${type.typeName}.jpg`)} alt='bible-character'/>
           </div>
 
          
         <div className='ccm-img-container'>
-        <img id="ccmImage" className='img-fluid ccm-img'	src={type.typeCcmImgUrl} alt='ccm'/>
+        <img id="ccmImage" className='img-fluid ccm-img'	src={require(`../images/ccmImage/CCM_${type.typeDtlName}.png`)} alt='ccm'/>
         </div>
         <button className="listen-button" onClick={() => movePage(type.typeCcmUrl)}>
         들으러 가기</button>
