@@ -109,11 +109,11 @@ const Calculate = (props) => {
        // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
        if(navigator.userAgent.match("KAKAOTALK") && browser === 'Safari'){
         const a = document.createElement('a');
-        a.href = `/searchResult/${res.data.issueNum}`;
+        a.href = `/searchResult/${res.data.issueId}`;
         document.body.appendChild(a);
         a.click();
        }else{
-       navigate(`/searchResult/${res.data.issueNum}`);
+       navigate(`/searchResult/${res.data.issueId}`);
        }
     }).catch(err => {
       // 에러 처리

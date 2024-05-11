@@ -149,9 +149,8 @@ const Result = () => {
 
 
   const shareKakao = () => {
-    const imageUrl = document.getElementById("resultImage").src;
-    
-    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${type.issueNum}`;
+
+    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${type.issueId}`;
 
     if (window.Kakao) {
       const kakao = window.Kakao;
