@@ -75,7 +75,7 @@ const Result = () => {
   const downloadFile = async () => {
     const browser = getBrowser();
     var useragt = navigator.userAgent.toLowerCase();
-		
+    const target_url = 'https://www.swordfor2024thsf.com/download?image='+type.typeDtlName+'.jpg';
 		if(useragt.match(/kakaotalk/i)){
         if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
           window.location.href= target_url;
