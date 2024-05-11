@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch , useSelector} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
 import {getBrowser} from '../common/Utils';
@@ -11,11 +11,6 @@ const Calculate = (props) => {
   const dispatch = useDispatch();
 
   let navigate = useNavigate();
-
-  
-  const [swordCount, setSwordCount] = useState(1);
-  const [resultMember, setResultMember] = useState(0);
-  const [data , setData] = useState(false);
 
   const  iScore  = useSelector(state => state.iScore);
   const  eScore  = useSelector(state => state.eScore);
@@ -112,13 +107,13 @@ const Calculate = (props) => {
         // 성공 처리
         dispatch({type: 'SAVE_RESULT',payload:result});
        // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
-       if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+       if(navigator.userAgent.match("KAKAOTALK") && browser === 'Safari'){
         const a = document.createElement('a');
-        a.href = `/searchResult/${res.data.issueNum}`;
+        a.href = `/searchResult/${res.data.issueId}`;
         document.body.appendChild(a);
         a.click();
        }else{
-       navigate(`/searchResult/${res.data.issueNum}`);
+       navigate(`/searchResult/${res.data.issueId}`);
        }
     }).catch(err => {
       // 에러 처리

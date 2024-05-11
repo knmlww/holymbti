@@ -75,7 +75,6 @@ const Result = () => {
   const downloadFile = async () => {
     const browser = getBrowser();
     var useragt = navigator.userAgent.toLowerCase();
-		const target_url = 'https://www.holymbti.kro.kr/download?image='+type.typeDtlName+'.jpg';
 		
 		if(useragt.match(/kakaotalk/i)){
         if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
@@ -105,9 +104,8 @@ const Result = () => {
 
 
   const shareKakao = () => {
-    const imageUrl = document.getElementById("resultImage").src;
-    
-    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${type.issueNum}`;
+
+    const resultUrl = location;
 
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -140,8 +138,8 @@ const Result = () => {
           {
             title: '테스트 하기',
             link: {
-              mobileWebUrl: 'https://www.holymbti.kro.kr',
-              webUrl: 'https://www.holymbti.kro.kr',
+              mobileWebUrl: 'https://www.swordfor2024thsf.com',
+              webUrl: 'https://www.swordfor2024thsf.com',
             },
           },
         ],
