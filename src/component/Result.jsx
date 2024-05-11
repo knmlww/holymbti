@@ -2,30 +2,23 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate ,useLocation, useSearchParams,useParams } from 'react-router-dom';
 import {useSelector , useDispatch} from "react-redux";
-import {blobToBase64, getBrowser} from '../common/Utils';
+import {blobToBase64, getBrowser, b64toBlob} from '../common/Utils';
 import axios from 'axios';
 import '../css/main.css';
 import '../css/default.css';
 import '../css/final.css';
 
 const Result = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch(); 
 
     const location = window.location.href;
-    
+
     const [data , setData] = useState(false);
-    const [resultMBTI, setResultMBTI] = useState("");
-    const [resultCnt, setResultCnt] = useState(null);
-    const [imgSrc, setImgSrc] = useState(null);
-    const [ccmImgSrc, setCcmImgSrc] = useState(null);
-    const [issueNum, setIssueNum] = useState(null);
-    const [ccmUrl, setCcmUrl] = useState(null);
-    const [kakaoUrl, setKakaoUrl] = useState(null);
-    const [bibleChar, setBibleChar] = useState(null);
+    const [type, setType] = useState(null);
 
-    const [bible, setBible] = useState(null);
-
+    const [bibleUrl, setBibleUrl] = useState(null);
+    const [descUrl, setDescUrl] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
 
     const { search } = useParams();
@@ -38,18 +31,7 @@ const Result = () => {
           }
         })
          .then((res)=>{
-
-          setResultCnt(res.data.mbtiCount);
-          setResultMBTI(res.data.typeDtlName);
-          setImgSrc(res.data.typeImgUrl);
-          setIssueNum(res.data.issueNum);
-          setResultCnt(res.data.mbtiCount);
-          setBible(res.data.typePray)
-          setCcmUrl(res.data.typeCcmUrl)
-          setCcmImgSrc(res.data.typeCcmImgUrl);
-          setKakaoUrl(res.data.typeThumbnailImageUrl);
-          setBibleChar(res.data.typeDesc);
-          
+          setType(res.data);
           setData(true)
          }).catch((error)=>{
           setData(false);
@@ -58,8 +40,17 @@ const Result = () => {
     },[]);
       
     const moveHome = () => {
-        dispatch({type:"CLEAR_SCORE"})
+      const browser = getBrowser();
+      dispatch({type:"CLEAR_SCORE"})
+      if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+        const a = document.createElement('a');
+        a.href = '/';
+        document.body.appendChild(a);
+        a.click();
+      }
+      else{
         navigate('/')
+      }
     }
 
     const movePage = (url) => {
@@ -82,76 +73,30 @@ const Result = () => {
 
  
   const downloadFile = async () => {
-    
+    const browser = getBrowser();
     var useragt = navigator.userAgent.toLowerCase();
-		var target_url = "https://www.holymbti.kro.kr";
 		
 		if(useragt.match(/kakaotalk/i)){
-      fetch(imgSrc, { method: 'GET' })
-      .then((res) => {
-          return res.blob();
-      })
-      .then((blob) => {  
-        if (navigator.share) {
-          navigator.share({
-          //  title: 'WebShare API Demo',
-          //  url: 'https://codepen.io/ayoisaiah/pen/YbNazJ',
-          files: [
-            new File([blob], 'file.png', {
-              type: blob.type,
-            }),
-          ],
-          }).then(() => {
-            console.log('Thanks for sharing!');
-          })
-          .catch(console.error);
-        } else {
-
-          blobToBase64(blob).then(res => {
-            // do what you wanna do
-          const a = document.createElement('a');
-          a.href = res;
-          a.download = "img";
-          a.target="_blank"
-          a.filename ="img"
-          document.body.appendChild(a);
-          a.click();
-          setTimeout((_) => {
-              window.URL.revokeObjectURL(url);
-          }, 60000);
-          a.remove(             );
-
-          });
-
-      
-        }               
-      })
-   
-		}else{
-  
-    fetch(imgSrc, { method: 'GET' })
-        .then((res) => {
-            return res.blob();
-        })
-        .then((blob) => {         
-
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "말씀의 검";
-            document.body.appendChild(a);
-            a.click();
-            setTimeout((_) => {
-                window.URL.revokeObjectURL(url);
-            }, 60000);
-            a.remove(             );
-
+        if(navigator.userAgent.match("KAKAOTALK") && browser == 'Safari'){
+          window.location.href= target_url;
  
-        })
-        .catch((err) => {
-            console.error('err: ', err);
-        });
-      
+      }
+      else {
+          window.location.href='intent://'+target_url.replace(/https?:\/\//i,'')+'#Intent;scheme=http;package=com.android.chrome;end';
+        }               
+
+		}else if(useragt.match(/instagram/i)){
+      if(useragt.match(/iphone|ipad|ipod/i)){
+        window.open(target_url, "_blank", "noopener, noreferrer");
+
+    }
+    else {
+        window.location.href='intent://'+target_url.replace(/https?:\/\//i,'')+'#Intent;scheme=http;package=com.android.chrome;end';
+      }               
+
+    }
+    else{
+     window.location.href = target_url;
     } 
 
   
@@ -159,9 +104,8 @@ const Result = () => {
 
 
   const shareKakao = () => {
-    const imageUrl = document.getElementById("resultImage").src;
-    
-    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${issueNum}`;
+
+    const resultUrl = location;
 
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -175,7 +119,7 @@ const Result = () => {
         content: {
           title: '6월 1일, 부흥을 위한 말씀의 검',
           description: '마귀의 간계를 능히 대적하기 위하여 하나님의 전신갑주를 입으라',
-          imageUrl:kakaoUrl,
+          imageUrl:type.typeThumbnailImageUrl,
           imageWidth:800,
           link: {
             // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
@@ -194,8 +138,8 @@ const Result = () => {
           {
             title: '테스트 하기',
             link: {
-              mobileWebUrl: 'https://www.holymbti.kro.kr',
-              webUrl: 'https://www.holymbti.kro.kr',
+              mobileWebUrl: 'https://www.swordfor2024thsf.com',
+              webUrl: 'https://www.swordfor2024thsf.com',
             },
           },
         ],
@@ -210,13 +154,12 @@ const Result = () => {
         {data?
         <>
         <div className='bible-section'>
-          <img id="resultTop" className='img-fluid' src={require(`../images/link5.jpg`)} alt="resultTop"/>
-
-            <p className='bible'>{bible}</p> 
+          <img id="resultTop" className='img-fluid' src={require(`../images/type5.jpg`)} alt="resultTop"/>
+            <p className='bible'>{type.typePray}</p> 
         </div>
      
         <div className="mbti-result">
-          <img id="resultImage" className='img-fluid' style={{width:"431px"}}	src={imgSrc} alt={resultMBTI}/>
+          <img id="resultImage" style={{width:"100%"}}	src={require(`../images/background/${type.typeDtlName}.jpg`)} alt={type.typeName}/>
             <p className='bible-sword'>말씀 배경화면으로 전신갑주 완전무장!</p>
         </div>
         <div className='download-container'>
@@ -225,15 +168,14 @@ const Result = () => {
         이미지 다운로드</button>
         </div>
           <div className='bible-char-container'>
-          <img id="bible-character" className='img-fluid ccm-img'	src={bibleChar} alt='bible-character'/>
+          <img id="bible-character" className='img-fluid ccm-img'	src={require(`../images/bibleChar/CHAR_${type.typeName}.jpg`)} alt='bible-character'/>
           </div>
 
          
         <div className='ccm-img-container'>
-        <img id="ccmImage" className='img-fluid ccm-img'	src={ccmImgSrc} alt='ccm'/>
+        <img id="ccmImage" className='img-fluid ccm-img'	src={require(`../images/ccmImage/CCM_${type.typeDtlName}.png`)} alt='ccm'/>
         </div>
-
-        <button className="listen-button" onClick={() => movePage(ccmUrl)}>
+        <button className="listen-button" onClick={() => movePage(type.typeCcmUrl)}>
         들으러 가기</button>
         <div className='last-button-container'>
         <button className="last-button"  onClick={() => movePage("http://www.youthfg.com/since/1")}>홀스 홈페이지 바로가기</button>  

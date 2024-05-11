@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch , useSelector} from "react-redux";
 import { useNavigate  } from 'react-router-dom';
-
+import {getBrowser} from '../common/Utils';
 import '../css/main.css';
 import '../css/default.css';
 import '../css/calculate.css'
@@ -11,11 +11,6 @@ const Calculate = (props) => {
   const dispatch = useDispatch();
 
   let navigate = useNavigate();
-
-  
-  const [swordCount, setSwordCount] = useState(1);
-  const [resultMember, setResultMember] = useState(0);
-  const [data , setData] = useState(false);
 
   const  iScore  = useSelector(state => state.iScore);
   const  eScore  = useSelector(state => state.eScore);
@@ -43,21 +38,6 @@ const Calculate = (props) => {
         
       }
   
-    const generateNumber = () => {
-      let result = "";
-  
-      const characters = '0123456789';
-      const charactersLength = characters.length;
-  
-      for (let i = 0; i < 9; i++) {
-        const randomIndex = Math.floor(Math.random() * charactersLength);
-        result += characters.charAt(randomIndex);
-      }
-  
-      return parseInt(result);
-    }
-
-    
   const generateMBTI = () => {
 
     
@@ -105,11 +85,8 @@ const Calculate = (props) => {
 
     const generatedImage = generateImage(result);
 
-    const generatedNumber = generateNumber();
-
     const url = '/holymbti/insertResult';
     const data = {
-        "issueNum" : generatedNumber,
         'mbtiResult' : result,
         'iresult' : i_result,
         'eresult' : e_result,
@@ -119,19 +96,25 @@ const Calculate = (props) => {
         'fresult' : f_result,
         'jresult' : j_result,
         'presult' : p_result,
-        'imgName' : generatedImage,
-        'imgUrl'  : '123'
-
+        'imgName' : generatedImage
     };
 
     const config = {"Content-Type": 'application/json'};
 
     axios.post(url,data,config)
       .then(res => {
+        const browser = getBrowser();
         // 성공 처리
         dispatch({type: 'SAVE_RESULT',payload:result});
        // navigate(`/searchResult?search=${generatedNumber}` ,{ state: generatedNumber });
-       navigate(`/searchResult/${generatedNumber}` ,{ state: generatedNumber });
+       if(navigator.userAgent.match("KAKAOTALK") && browser === 'Safari'){
+        const a = document.createElement('a');
+        a.href = `/searchResult/${res.data.issueId}`;
+        document.body.appendChild(a);
+        a.click();
+       }else{
+       navigate(`/searchResult/${res.data.issueId}`);
+       }
     }).catch(err => {
       // 에러 처리
       //console.dir(err);// --> 서버단 에러메세지 출력~
@@ -143,22 +126,8 @@ const Calculate = (props) => {
 
     setTimeout(() => {
       generateMBTI();
-      }, 6000);
+      }, 4000);
   },[])
-
-
-
-  useEffect(()=>{
-    setTimeout(() => {
-      setSwordCount(swordCount+1);
-
-      if(swordCount === 3){
-        setSwordCount(1);
-      }
-      }, 500);
-  },[swordCount])
-
-
 
   return (
     <div id='calculate' className='calculate'>

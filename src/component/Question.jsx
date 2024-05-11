@@ -1,6 +1,6 @@
 import React, { useEffect, useState , Fragment } from 'react';
 import axios from 'axios';
-import {useDispatch , useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 
 import '../css/main.css';
@@ -36,6 +36,7 @@ const Question = (props) => {
 
 
   const moveNextQuestion = (option) => {
+    console.dir("CLICK EVENT");
     if (showQuestion) {
       setFadeInOut('fade-out');
       setIsDisabled(!isDisabled);
@@ -43,15 +44,11 @@ const Question = (props) => {
       setShowQuestion(!showQuestion);
       setCurrentQuestion(questionArr[questionIndex+1]); 
 
-      if(questionIndex != 11){
+      if(questionIndex !== 11){
         setQuestionIndex(questionIndex+1);
       }
       }, 800);
     } 
-
-
-  //  setCurrentQuestion(questionArr[questionIndex+1]);
-
     dispatch({type: option});
 
     if (questionIndex === 11){
