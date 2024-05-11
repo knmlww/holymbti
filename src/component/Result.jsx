@@ -75,7 +75,6 @@ const Result = () => {
   const downloadFile = async () => {
     
     var useragt = navigator.userAgent.toLowerCase();
-		var target_url = "https://www.holymbti.kro.kr";
 		
 		if(useragt.match(/kakaotalk/i)){
       fetch(type.typeImgUrl, { method: 'GET' })
@@ -150,7 +149,7 @@ const Result = () => {
 
   const shareKakao = () => {
 
-    const resultUrl = `https://www.holymbti.kro.kr/searchResult/${type.issueId}`;
+    const resultUrl = location;
 
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -183,8 +182,8 @@ const Result = () => {
           {
             title: '테스트 하기',
             link: {
-              mobileWebUrl: 'https://www.holymbti.kro.kr',
-              webUrl: 'https://www.holymbti.kro.kr',
+              mobileWebUrl: 'https://www.swordfor2024thsf.com',
+              webUrl: 'https://www.swordfor2024thsf.com',
             },
           },
         ],
