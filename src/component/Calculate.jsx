@@ -101,9 +101,7 @@ const Calculate = (props) => {
         'fresult' : f_result,
         'jresult' : j_result,
         'presult' : p_result,
-        'imgName' : generatedImage,
-        'imgUrl'  : '123'
-
+        'imgName' : generatedImage
     };
 
     const config = {"Content-Type": 'application/json'};
